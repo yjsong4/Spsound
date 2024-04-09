@@ -3,17 +3,37 @@
 #wrap {
 	width: 1200px;
 	margin: 0 auto;
-	height: 800px;
+	min-height: 100%;
 }
 
 header {
 	height: 100px;
 }
 
-.login-box {
-	height : 600px;
+.nameBox {
+	width: 175px;
+	height: 55px;
+	background-color: black;
 }
 
-footer {
-	height: 100px;
+.login-box {
+	height : 500px;
+}
+
+.login-btn {
+	margin-top: 80px;
+	margin-bottom: 10px;
+	background-color: #9868bb;
+}
+
+.login-text {
+	margin :80px;
+}
+
+.footer-box {
+	height: 80px;
+	width : 90%;
+	position: absolute;
+	bottom :0;
+	right: 5%;
 }
