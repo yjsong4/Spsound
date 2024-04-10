@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,7 @@
 <body>
 
 	<div id="wrap">
-		<header class="d-flex align-items-center justify-content-between ml-3">
-			<h1 class="nameBox text-center text-white">SPsound</h1>
-		</header>
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 	
 		<section class="login-box d-flex justify-content-center align-items-center">
 			<div>
@@ -30,14 +29,7 @@
 		
 		</section>
 		
-		<div class="footer-box">
-			<hr class="footerHr">
-			<footer class="d-flex justify-content-center align-items-center text-italic font-italic">
-				<div>
-					Copyright ©2024 Spsound All rights reserved.
-				</div>			
-			</footer>
-		</div>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
 	</div>
 
