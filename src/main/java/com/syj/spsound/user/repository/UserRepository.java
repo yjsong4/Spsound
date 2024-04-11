@@ -15,5 +15,7 @@ public interface UserRepository {
 	public User selectUserByEmailAndPassword(
 			@Param("email") String email
 			, @Param("password") String Password);
+	
+	public int selectCountByEmail(@Param("email") String email);
 
 }

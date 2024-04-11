@@ -42,3 +42,54 @@ a:visited {
 	right: 5%;
 	font-size : 14px;
 }
+
+
+
+.wrapper {
+  height: 1200px;
+  position: relative;
+}
+
+#floating1 {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  background-color: pink;
+}
+#floating2 {
+  position: absolute;
+  top: 200px;
+  left: 1000px;
+  background-color: purple;
+}
+#floating3 {
+  position: absolute;
+  top: 500px;
+  left: 800px;
+  background-color: orange;
+}
+
+#floating4 {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  background-color: blue;
+}
+
+#floating5 {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  background-color: blue;
+}
+
+
+.circle {
+	width: 200px;
+	height: 200px;
+	margin : 100px;
+	position: absolute;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 200px;
+}

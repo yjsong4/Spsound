@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,22 @@ public class UserRestController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping("/duplicate-email")
+	public Map<String, Boolean> isDuplicateEmail(@RequestParam("email") String email) {
+		
+		Map<String, Boolean> resultMap = new HashMap<>();
+		
+		boolean isDuplicate = userService.isDuplicateEmail(email);
+		
+		if(isDuplicate) {
+			resultMap.put("isDuplicate", true);
+		} else {
+			resultMap.put("isDuplicate", false);
+		}
+		
+		return resultMap;
+	}
 	
 	@PostMapping("/join")
 	public Map<String, String> join(

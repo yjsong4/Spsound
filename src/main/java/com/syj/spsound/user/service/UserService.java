@@ -13,6 +13,17 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	public boolean isDuplicateEmail(String email) {
+		
+		int count = userRepository.selectCountByEmail(email);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	public int addUser(String email, String password) {
 		
 		String encryptPassword = EncryptUtils.md5(password);

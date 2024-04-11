@@ -17,7 +17,8 @@
 			<div>
 				<h1 class="text-center font-weight-bold main-text">Join</h1>
 				<form>
-					<input type="email" placeholder="email" size="36" class="form-control my-4" id="emailInput">
+					<input type="email" placeholder="email" size="36" class="form-control my-4" id="emailInput" oninput="checkEmail()">
+					
 					<input type="password" placeholder="password" class="form-control my-4" id="passwordInput">
 					<input type="password" placeholder="Confirm password" class="form-control" id="confirmPasswordInput">
 					<button type="submit" class="btn btn-block text-white main-btn" id="joinBtn">JOIN</button>
@@ -33,11 +34,35 @@
 <script>
 	$(document).ready(function() {
 		
+		function checkEmail() {
+			
+			var isDuplicateEmail = true;
+			let email = $("#emailInput").val();
+			
+			$.ajax({
+				type:"get"
+				, url:"/user/duplicate-email"
+				, data:{"email":email}
+				, success:function(data) {
+					
+					isDuplicateEmail = data.isDuplicate;
+					
+					
+				}
+				, error:function() {
+					alert("이메일 중복 에러")
+				}
+			});
+			
+		}
+		
+
 		$("#joinBtn").on("click", function() {
 			
 			let email = $("#emailInput").val();
 			let password = $("#passwordInput").val();
 			let confirmPassword = $("#confirmPasswordInput").val();
+			let number = password.search(/[0-9]/g);
 			const pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 
 			if(email == "") {
@@ -50,6 +75,14 @@
 		    }
 			if(password == "") {
 				alert("비밀번호를 입력하세요.");
+				return;
+			}
+			if(password.length < 6) {
+				alert("비밀번호를 6자 이상 입력하세요.");
+				return;
+			}
+			if(number < 0) {
+				alert("비밀번호에 하나 이상의 숫자를 포함해주세요.");
 				return;
 			}
 			if(password != confirmPassword) {

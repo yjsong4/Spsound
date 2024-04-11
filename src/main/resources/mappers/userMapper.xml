@@ -32,4 +32,14 @@
 			, #{password}
 		)
 	</insert>
+	
+	<select id="selectCountByEmail" parameterType="String" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			`user`
+		WHERE
+			`email` = #{email}
+	</select>
+	
 </mapper>
