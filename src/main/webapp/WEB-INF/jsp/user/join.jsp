@@ -16,13 +16,14 @@
 		<section class="input-box d-flex justify-content-center align-items-center">
 			<div>
 				<h1 class="text-center font-weight-bold main-text">Join</h1>
-				<form>
-					<input type="email" placeholder="email" size="36" class="form-control my-4" id="emailInput" oninput="checkEmail()">
+				<div class="form-group">
+					<input type="email" placeholder="email" size="36" class="form-control mt-4" id="emailInput" oninput="checkEmail()">
+					<div><font id="emailAlarm"></font></div>
 					
-					<input type="password" placeholder="password" class="form-control my-4" id="passwordInput">
-					<input type="password" placeholder="Confirm password" class="form-control" id="confirmPasswordInput">
-					<button type="submit" class="btn btn-block text-white main-btn" id="joinBtn">JOIN</button>
-				</form>
+					<input type="password" placeholder="password" class="form-control mt-1" id="passwordInput">
+					<input type="password" placeholder="Confirm password" class="form-control mt-4" id="confirmPasswordInput">
+					<button type="button" class="btn btn-block text-white main-btn" id="joinBtn">JOIN</button>
+				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -34,27 +35,35 @@
 <script>
 	$(document).ready(function() {
 		
-		function checkEmail() {
+		$("#emailInput").keyup(function() {
 			
-			var isDuplicateEmail = true;
 			let email = $("#emailInput").val();
-			
+			let isDuplicateEmail = true;
+
 			$.ajax({
 				type:"get"
 				, url:"/user/duplicate-email"
 				, data:{"email":email}
 				, success:function(data) {
-					
+
 					isDuplicateEmail = data.isDuplicate;
 					
-					
+					if(data.isDuplicate){
+						$("#emailAlarm").html("사용중인 이메일 입니다.");
+						$("#emailAlarm").attr("color", "#dc3545");
+						$("#joinBtn").prop("disabled", true);
+	                } else {
+	                	$("#emailAlarm").html("사용가능한 이메일 입니다.");
+	                	$("#emailAlarm").attr("color", "#2fb380");
+	                	$("#joinBtn").prop("disabled", false);
+	                }
 				}
 				, error:function() {
 					alert("이메일 중복 에러")
 				}
+				
 			});
-			
-		}
+		});
 		
 
 		$("#joinBtn").on("click", function() {

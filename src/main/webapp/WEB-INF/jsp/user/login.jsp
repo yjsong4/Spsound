@@ -39,7 +39,7 @@
 			e.preventDefault();
 			
 			let email = $("#emailInput").val();
-			let password = $("passwordInput").val();
+			let password = $("#passwordInput").val();
 			
 			if(email == "") {
 				alert("이메일을 입력하세요");
@@ -56,7 +56,7 @@
 				, data:{"email":email, "password":password}
 				, success:function(data) {
 					if(data.result == "success") {
-						location.href = "/spsound/main-view";
+						location.href="/spsound/select-genre-view";
 					} else {
 						alert("로그인 실패");
 					}
