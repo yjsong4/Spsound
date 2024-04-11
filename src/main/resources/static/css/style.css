@@ -26,12 +26,67 @@ header > .logo-box {
 	letter-spacing: 2px;	
 }
 
+#emailAlarm {
+	font-size: 11px;
+	margin-left: 5px;
+}
+
 a:link {
 	color:navy;
 	font-size:13px;
 }
+
 a:visited {
 	color: #896136;
+}
+
+#floating1 {
+  top: 50px;
+  left: 100px;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  background-color: pink;
+}
+#floating2 {
+  top: 180px;
+  left: 1100px;
+  width: 127px;
+  height: 127px;
+  line-height: 127px;
+  background-color: purple;
+}
+#floating3 {
+  top: 440px;
+  left: 800px;
+  width: 333px;
+  height: 333px;
+  line-height: 333px;
+  background-color: orange;
+}
+
+#floating4 {
+  top: 100px;
+  left: 590px;
+  width: 144px;
+  height: 144px;
+  line-height: 110px;
+  background-color: green;
+}
+
+#floating5 {
+  top: 380px;
+  left: 280px;
+  width: 288px;
+  height: 288px;
+  background-color: navy;
+}
+
+.circle {
+	position: absolute;
+	border-radius: 50%;
+	text-align: center;
+	letter-spacing: 4px;
 }
 
 .footer-box {
@@ -41,55 +96,4 @@ a:visited {
 	bottom :0;
 	right: 5%;
 	font-size : 14px;
-}
-
-
-
-.wrapper {
-  height: 1200px;
-  position: relative;
-}
-
-#floating1 {
-  position: absolute;
-  top: 50px;
-  left: 100px;
-  background-color: pink;
-}
-#floating2 {
-  position: absolute;
-  top: 200px;
-  left: 1000px;
-  background-color: purple;
-}
-#floating3 {
-  position: absolute;
-  top: 500px;
-  left: 800px;
-  background-color: orange;
-}
-
-#floating4 {
-  position: absolute;
-  top: 100px;
-  left: 500px;
-  background-color: blue;
-}
-
-#floating5 {
-  position: absolute;
-  top: 100px;
-  left: 500px;
-  background-color: blue;
-}
-
-
-.circle {
-	width: 200px;
-	height: 200px;
-	margin : 100px;
-	position: absolute;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 200px;
 }
