@@ -13,6 +13,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	public int addUser(String email, String password) {
+		
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userRepository.insertUser(email, encryptPassword);
+	}
+	
 	public User getUserByEmailAndPassword(String email, String password) {
 		
 		String encryptPassword = EncryptUtils.md5(password);

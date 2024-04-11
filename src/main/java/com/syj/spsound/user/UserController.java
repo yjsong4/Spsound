@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 	
 	@GetMapping("/user/login-view")
-	public String inputLogin() {
+	public String login() {
 		
 		return "user/login";
+	}
+	
+	@GetMapping("/user/join-view")
+	public String join() {
+		
+		return "user/join";
 	}
 
 }

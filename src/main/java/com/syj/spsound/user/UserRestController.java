@@ -21,6 +21,24 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	@PostMapping("/join")
+	public Map<String, String> join(
+			@RequestParam("email") String email
+			, @RequestParam("password") String password) {
+		
+		int count = userService.addUser(email, password);
+		
+		Map<String, String> resultMap = new HashMap<>();
+
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 	@PostMapping("/login")
 	public Map<String, String> login(
 			@RequestParam("email") String email

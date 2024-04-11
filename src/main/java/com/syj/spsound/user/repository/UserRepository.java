@@ -8,6 +8,10 @@ import com.syj.spsound.user.domain.User;
 @Mapper
 public interface UserRepository {
 	
+	public int insertUser(
+			@Param("email") String email
+			, @Param("password") String Password);
+	
 	public User selectUserByEmailAndPassword(
 			@Param("email") String email
 			, @Param("password") String Password);

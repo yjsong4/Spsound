@@ -6,28 +6,32 @@
 	min-height: 100%;
 }
 
-header {
-	height: 100px;
-}
-
-.logo-box {
-	width: 180px;
-	height: 55px;
+header > .logo-box {
+	width: 199px;
+	height: 57px;
 	background-color: black;
+	letter-spacing: 3px;
 }
 
-.login-box {
-	height : 500px;
+.main-text {
+	margin :95px;
+	letter-spacing:6px;
+	color: #474747;
 }
 
-.login-btn {
+.main-btn {
 	margin-top: 80px;
 	margin-bottom: 10px;
 	background-color: #9868bb;
+	letter-spacing: 2px;	
 }
 
-.login-text {
-	margin :80px;
+a:link {
+	color:navy;
+	font-size:13px;
+}
+a:visited {
+	color: #896136;
 }
 
 .footer-box {
@@ -36,4 +40,5 @@ header {
 	position: absolute;
 	bottom :0;
 	right: 5%;
+	font-size : 14px;
 }

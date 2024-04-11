@@ -13,24 +13,18 @@
 
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-	
-		<section class="login-box d-flex justify-content-center align-items-center">
+		<section class="d-flex justify-content-center align-items-center">
 			<div>
-				<h1 class="text-center font-weight-bold login-text">Login</h1>
-	
+				<h1 class="text-center font-weight-bold main-text">Login</h1>
 				<form id="loginForm">
-					<input type="text" placeholder="email" size="40" class="form-control my-4" id="emailInput">
-					<input type="password" placeholder="password" class="form-control" id="passwordInput">
-					<button type="submit" class="btn btn-block text-white login-btn">LOGIN</button>
+					<input type="text" placeholder="email" size="36" class="form-control my-4" id="emailInput" required>
+					<input type="password" placeholder="password" class="form-control" id="passwordInput" required>
+					<button type="submit" class="btn btn-block text-white main-btn">LOGIN</button>
 				</form>
-				
-				<div class="text-center small"><a href="#">Create account here!</a></div>
+				<div class="text-center small"><a href="/user/join-view">Create account here!</a></div>
 			</div>
-		
 		</section>
-		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-		
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
