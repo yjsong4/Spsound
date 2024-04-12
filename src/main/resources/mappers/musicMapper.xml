@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.syj.spsound.music.repository.MusicRepository">
+	
+	<insert id="insertGenre" parameterType="map">
+		INSERT INTO
+			`genre`
+		(
+			`userId`
+			, `genre`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{genre}
+		)
+	</insert>
+
+</mapper>

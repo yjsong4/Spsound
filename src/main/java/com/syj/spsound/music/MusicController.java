@@ -18,5 +18,4 @@ public class MusicController {
 		return "music/artist";
 	}
 
-
 }

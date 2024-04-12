@@ -10,11 +10,11 @@
 </head>
 <body>
 	<div id="wrap">
-		<div class="circle" id="floating1">circle</div>
-		<div class="circle" id="floating2">circle</div>
-		<div class="circle" id="floating3">circle</div>
-		<div class="circle" id="floating4">circle</div>
-		<div class="circle" id="floating5">circle</div>
+		<div class="circle" id="floating1">Pop</div>
+		<div class="circle" id="floating2">Hip Hop</div>
+		<div class="circle" id="floating3">Classical</div>
+		<div class="circle" id="floating4">Latin</div>
+		<div class="circle" id="floating5">Jazz</div>
 	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
@@ -25,9 +25,27 @@
 <script>
 	
 	$(document).ready(function() {
+		
 		$(".circle").on("click", function() {
 			
-			alert("click");
+			let genre = $(this).text();
+			
+			$.ajax({
+				type:"post"
+				, url:"/music/select/genre"
+				, data:{"genre":genre}
+				, success:function(data) {
+					if(data.result == "success") {
+						alert("성공");
+					} else {
+						alert("장르 저장 실패");
+					}
+				}
+				, error:function() {
+					alert("선택 에러");
+				}
+			});
+			
 		});
 		
 	});
@@ -50,11 +68,13 @@
 	    delay: random(0,delay) // 지연시간
 	  })
 	}
+	
 	floatingObject('#floating1',1,15)
 	floatingObject('#floating2',.5,15)
 	floatingObject('#floating3',1.5,20)
 	floatingObject('#floating4',1.5,20)
-
+	floatingObject('#floating5',.2,15)
+	
 </script>
 
 </body>
