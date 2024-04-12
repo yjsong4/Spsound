@@ -64,7 +64,6 @@
 				
 			});
 		});
-		
 
 		$("#joinBtn").on("click", function() {
 			

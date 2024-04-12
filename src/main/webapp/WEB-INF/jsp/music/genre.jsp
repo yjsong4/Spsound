@@ -29,6 +29,9 @@
 		$(".circle").on("click", function() {
 			
 			let genre = $(this).text();
+		
+			
+			
 			
 			$.ajax({
 				type:"post"
@@ -37,14 +40,18 @@
 				, success:function(data) {
 					if(data.result == "success") {
 						alert("성공");
+								
+						
 					} else {
 						alert("장르 저장 실패");
 					}
 				}
 				, error:function() {
-					alert("선택 에러");
+					alert("다른 장르를 선택해 주세요.");
 				}
 			});
+			
+			
 			
 		});
 		
