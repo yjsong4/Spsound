@@ -11,11 +11,11 @@
 <body>
 	<div id="wrap">
 		<div class="circle-box position-relative">
-			<div class="circle" id="floating1">Pop</div>
-			<div class="circle" id="floating2">Hip Hop</div>
-			<div class="circle" id="floating3">Classical</div>
-			<div class="circle" id="floating4">Latin</div>
-			<div class="circle" id="floating5">Jazz</div>		
+			<div class="circle" id="floating1">가수1</div>
+			<div class="circle" id="floating2">가수2</div>
+			<div class="circle" id="floating3">가수3</div>
+			<div class="circle" id="floating4">가수4</div>
+			<div class="circle" id="floating5">가수5</div>		
 		</div>
 	</div>
 

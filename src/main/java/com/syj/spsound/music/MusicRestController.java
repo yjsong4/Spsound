@@ -40,21 +40,6 @@ public class MusicRestController {
 		return resultMap;
 	}
 	
-	@PostMapping("/select/genre-limit")
-	public Map<String, String> limitNumberOfGenre(@RequestParam("genre") String genre) {
-		
-		int count = musicService.countGenre(genre);
-		
-		Map<String, String> resultMap = new HashMap<>();
-		
-		for(int i = 0; i < 3; i++) {
-			count += count;
-			if(count > 3) {
-				resultMap.put("result", "fail");
-			}
-		}
-		
-		return resultMap;
-	}
+
 
 }

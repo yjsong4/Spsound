@@ -19,8 +19,7 @@
 			<div class="circle" id="floating5">Jazz</div>		
 		</div>
 		
-		<div>
-		
+		<div class="d-flex justify-content-end">
 			<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>		
 		</div>
 	</div>
@@ -34,19 +33,11 @@
 	
 	$(document).ready(function() {
 		
-		
-		
-		
+		var clickCount = 0;
 		
 		$(".circle").on("click", function() {
 			
-			var count = 0;
-			count ++;
-			if(count >= 3) {
-				$(".next-btn").removeClass("d-none");
-			}
-			
-			
+		
 			let genre = $(this).text();
 			
 			$.ajax({
@@ -55,17 +46,14 @@
 				, data:{"genre":genre}
 				, success:function(data) {
 					if(data.result == "success") {
-						alert("성공");
-						
-						
-						
-						
+						clickCount ++;
+						if(clickCount >= 3) {
+							$(".next-btn").removeClass("d-none");
+						}
+		
 					} else {
 						alert("장르 저장 실패");
 					}
-					
-					
-					
 					
 					
 				}
