@@ -54,7 +54,7 @@ a:visited {
 
 #floating1 {
     top: 50px;
-    left: 60px;
+    left: 0px;
     width: 200px;
     height: 200px;
     line-height: 200px;
@@ -62,39 +62,85 @@ a:visited {
 }
 
 #floating2 {
-    top: 180px;
+    top: 77px;
     left: 1060px;
-    width: 127px;
-    height: 127px;
+    width: 167px;
+    height: 167px;
     line-height: 127px;
     background-color: purple;
 }
 
 #floating3 {
     top: 440px;
-    left: 800px;
-    width: 333px;
-    height: 333px;
+    left: 899px;
+    width: 323px;
+    height: 323px;
     line-height: 333px;
     background-color: orange;
 }
 
 #floating4 {
-    top: 100px;
-    left: 590px;
-    width: 144px;
-    height: 144px;
+    top: 80px;
+    left: 529px;
+    width: 299px;
+    height: 299px;
     line-height: 130px;
     background-color: limegreen;
 }
 
 #floating5 {
-	top: 380px;
-    left: 200px;
-    width: 288px;
-    height: 288px;
+	top: 290px;
+    left: 114px;
+    width: 270px;
+    height: 270px;
     line-height: 300px;
     background-color: skyblue;
+}
+
+#floating6 {
+    top: 600px;
+    left: 0px;
+    width: 174px;
+    height: 174px;
+    line-height: 130px;
+    background-color: yellow;
+}
+
+#floating7 {
+    top: 124px;
+    left: 310px;
+    width: 125px;
+    height: 126px;
+    line-height: 130px;
+    background-color: #41a3cd;
+}
+
+#floating8 {
+ top: 260px;
+    left: 923px;
+    width: 103px;
+    height: 103px;
+    line-height: 130px;
+    background-color: #b0cdca;
+}
+
+#floating9 {
+    top: 520px;
+    left: 370px;
+    width: 222px;
+    height: 222px;
+    line-height: 130px;
+    background-color: #a58641;
+}
+
+#floating10 {
+	    top: 433px;
+    left: 660px;
+   
+    width: 155px;
+    height: 155px;
+    line-height: 130px;
+    background-color: #aa7bcd;
 }
 
 .footer-box {
@@ -108,7 +154,7 @@ a:visited {
 
 .next-btn {
 	font-size: 39px;
-	margin-top: 800px;
+	margin-top: 750px;
 }
 
 .menu {

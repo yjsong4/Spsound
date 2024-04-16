@@ -16,7 +16,13 @@
 			<div class="circle" id="floating2">Hip Hop</div>
 			<div class="circle" id="floating3">Classical</div>
 			<div class="circle" id="floating4">Latin</div>
-			<div class="circle" id="floating5">Jazz</div>		
+			<div class="circle" id="floating5">Jazz</div>
+			<div class="circle" id="floating6">RnB</div>
+			<div class="circle" id="floating7">Country</div>
+			<div class="circle" id="floating8">Rock</div>
+			<div class="circle" id="floating9">Soul</div>
+			<div class="circle" id="floating10">Acoustic</div>
+			
 		</div>
 		
 		<div class="d-flex justify-content-end">
@@ -53,7 +59,7 @@
 						if(clickCount >= 3) {
 							$(".next-btn").removeClass("d-none");
 						}
-
+						
 					} else {
 						alert("장르 저장 실패");
 					}
@@ -91,6 +97,11 @@
 	floatingObject('#floating3',1.5,20)
 	floatingObject('#floating4',1.5,20)
 	floatingObject('#floating5',.2,15)
+	floatingObject('#floating6',.2,15)
+	floatingObject('#floating7',.2,15)
+	floatingObject('#floating8',.2,15)
+	floatingObject('#floating9',.2,15)
+	floatingObject('#floating10',.2,15)
 	
 </script>
 
