@@ -37,7 +37,6 @@
 		
 		$(".circle").on("click", function() {
 			
-		
 			let genre = $(this).text();
 			
 			$.ajax({
@@ -46,16 +45,18 @@
 				, data:{"genre":genre}
 				, success:function(data) {
 					if(data.result == "success") {
+						
 						clickCount ++;
+						
+						alert(genre + " 선택");
+						
 						if(clickCount >= 3) {
 							$(".next-btn").removeClass("d-none");
 						}
-		
+
 					} else {
 						alert("장르 저장 실패");
 					}
-					
-					
 				}
 				, error:function() {
 					alert("다른 장르를 선택해 주세요.");

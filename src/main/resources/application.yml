@@ -21,6 +21,7 @@ spring:
       suffix: .jsp
   application:
     name: Spsound
+
     
 mybatis:
   mapper-locations: mappers/*Mapper.xml

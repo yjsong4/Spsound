@@ -18,13 +18,4 @@
 		)
 	</insert>
 	
-	<select id="selectGenre" parameterType="String" resultType="int">
-		SELECT
-			count(*)
-		FROM
-			`genre`
-		WHERE
-			`genre` = #{genre}
-	</select>
-
 </mapper>

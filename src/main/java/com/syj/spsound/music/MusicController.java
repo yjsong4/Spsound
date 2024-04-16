@@ -17,5 +17,11 @@ public class MusicController {
 		
 		return "music/artist";
 	}
+	
+	@GetMapping("/spsound/main-view")
+	public String mainPage() {
+		
+		return "music/main";
+	}
 
 }

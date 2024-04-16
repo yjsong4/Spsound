@@ -110,3 +110,43 @@ a:visited {
 	font-size: 39px;
 	margin-top: 800px;
 }
+
+.menu {
+	width: 900px;
+	height: 57px;
+	background-color: black;
+}
+
+
+.menu-name {
+	color: white;
+	font-size: 20px;
+	margin-top: 10px;
+	list-style-type: none;
+	
+}
+
+.img{
+	width: 400px;
+	height: 400px;
+}
+
+.introduce {
+	width: 600px;
+	height: 50px;
+}
+
+.search {
+	width: 600px;
+	height: 50px;
+}
+
+.music-box {
+	width : 600px;
+	height: 300px;
+}
+
+.playlist {
+	width: 300px;
+	height: 300px;
+}
