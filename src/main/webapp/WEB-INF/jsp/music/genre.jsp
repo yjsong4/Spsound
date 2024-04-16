@@ -7,14 +7,22 @@
 <title>장르선택</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
 	<div id="wrap">
-		<div class="circle" id="floating1">Pop</div>
-		<div class="circle" id="floating2">Hip Hop</div>
-		<div class="circle" id="floating3">Classical</div>
-		<div class="circle" id="floating4">Latin</div>
-		<div class="circle" id="floating5">Jazz</div>
+		<div class="circle-box position-relative">
+			<div class="circle" id="floating1">Pop</div>
+			<div class="circle" id="floating2">Hip Hop</div>
+			<div class="circle" id="floating3">Classical</div>
+			<div class="circle" id="floating4">Latin</div>
+			<div class="circle" id="floating5">Jazz</div>		
+		</div>
+		
+		<div>
+		
+			<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>		
+		</div>
 	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
@@ -26,12 +34,20 @@
 	
 	$(document).ready(function() {
 		
+		
+		
+		
+		
 		$(".circle").on("click", function() {
 			
+			var count = 0;
+			count ++;
+			if(count >= 3) {
+				$(".next-btn").removeClass("d-none");
+			}
+			
+			
 			let genre = $(this).text();
-		
-			
-			
 			
 			$.ajax({
 				type:"post"
@@ -40,19 +56,24 @@
 				, success:function(data) {
 					if(data.result == "success") {
 						alert("성공");
-								
+						
+						
+						
 						
 					} else {
 						alert("장르 저장 실패");
 					}
+					
+					
+					
+					
+					
 				}
 				, error:function() {
 					alert("다른 장르를 선택해 주세요.");
 				}
 			});
-			
-			
-			
+				
 		});
 		
 	});

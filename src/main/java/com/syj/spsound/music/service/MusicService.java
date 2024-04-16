@@ -15,5 +15,13 @@ public class MusicService {
 		
 		return musicRepository.insertGenre(userId, genre);
 	}
-}
 	
+	public int countGenre(String genre) {
+		
+		return musicRepository.selectGenre(genre);
+		
+		
+		
+	}
+	
+}
