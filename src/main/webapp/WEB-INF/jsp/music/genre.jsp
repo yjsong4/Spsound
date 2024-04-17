@@ -13,6 +13,8 @@
 	<div id="wrap">
 		<div class="circle-box position-relative">
 			<div class="circle" id="floating1">Pop</div>
+			
+			
 			<div class="circle" id="floating2">Hip Hop</div>
 			<div class="circle" id="floating3">Classical</div>
 			<div class="circle" id="floating4">Latin</div>
@@ -38,40 +40,19 @@
 <script>
 	
 	$(document).ready(function() {
-		
+
 		var clickCount = 0;
 		
 		$(".circle").on("click", function() {
 			
-			let genre = $(this).text();
 			
-			$.ajax({
-				type:"post"
-				, url:"/music/select/genre"
-				, data:{"genre":genre}
-				, success:function(data) {
-					if(data.result == "success") {
-						
-						clickCount ++;
-						
-						alert(genre + " 선택");
-						
-						if(clickCount >= 3) {
-							$(".next-btn").removeClass("d-none");
-						}
-						
-					} else {
-						alert("장르 저장 실패");
-					}
-				}
-				, error:function() {
-					alert("다른 장르를 선택해 주세요.");
-				}
-			});
-				
 		});
 		
+		
+
+		
 	});
+	
 	
 	
 	//범위 랜덤 함수(소수점 2자리까지)
@@ -102,7 +83,6 @@
 	floatingObject('#floating8',.2,15)
 	floatingObject('#floating9',.2,15)
 	floatingObject('#floating10',.2,15)
-	
 </script>
 
 </body>

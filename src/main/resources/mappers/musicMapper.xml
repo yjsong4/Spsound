@@ -18,4 +18,41 @@
 		)
 	</insert>
 	
+	<select id="selectGenreList"
+	parameterType="int" resultType="com.syj.spsound.music.domain.Genre">
+		SELECT
+			`id`
+			, `userId`
+			, `genre`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`genre`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
+	<select id="selectGenre"
+	parameterType="map" resultType="com.syj.spsound.music.domain.Genre">
+		SELECT
+			`id`
+			, `userId`
+			, `genre`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`genre`
+		WHERE
+			`userId` = #{userId}
+			`genre` = #{genre}
+	</select>
+	
+	<delete id="deleteGenre" parameterType="map">
+		DELETE FROM
+			`genre`
+		WHERE
+			`userId` = #{userId}
+			`genre` = #{genre}
+	</delete>
+	
 </mapper>
