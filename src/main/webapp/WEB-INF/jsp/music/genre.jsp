@@ -45,7 +45,7 @@
 		var clickCount = 0;
 
 		$(".circle").on("click", function() {
-			
+		
 			let genre = $(this).text();
 			
 			let check = $(this).data("checked");
@@ -104,6 +104,8 @@
 		});
 		
 	});
+	
+
 	
 	//범위 랜덤 함수(소수점 2자리까지)
 	function random(min, max) {

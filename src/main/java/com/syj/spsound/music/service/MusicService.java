@@ -1,11 +1,13 @@
 package com.syj.spsound.music.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.syj.spsound.music.domain.Genre;
+import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.repository.MusicRepository;
 
 @Service
@@ -20,6 +22,15 @@ public class MusicService {
 	}
 	
 	public List<Genre> getGenreList(int userId) {
+		
+		List<Choice> ChoiceList = new ArrayList<>();
+
+//		[
+//			{"name":"pop", "checked":false}
+//			{"name":"kpop", "checked":false}
+//			{"name":"jazz", "checked":false}
+//		]
+		
 		
 		return musicRepository.selectGenreList(userId);
 	}
