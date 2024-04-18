@@ -15,7 +15,7 @@ public class MusicService {
 	private MusicRepository musicRepository;
 	
 	public int chooseGenre(int userId, String genre) {
-		
+	
 		return musicRepository.insertGenre(userId, genre);
 	}
 	

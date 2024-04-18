@@ -14,7 +14,7 @@
 	<div id="wrap">
 	
 		<div class="circle-box position-relative">
-
+			<c:forEach var="genre" items="${genreList }">
 				<div class="circle" id="floating1">Pop</div>
 				<div class="circle" id="floating2">Hip Hop</div>
 				<div class="circle" id="floating3">Classical</div>
@@ -25,7 +25,7 @@
 				<div class="circle" id="floating8">Rock</div>
 				<div class="circle" id="floating9">Soul</div>
 				<div class="circle" id="floating10">Acoustic</div>
-			
+			</c:forEach>
 		</div>
 		
 		<div class="d-flex justify-content-end">
@@ -43,28 +43,48 @@
 	$(document).ready(function() {
 
 		var clickCount = 0;
-		var circleClicked = false;
-		
+
 		$(".circle").on("click", function() {
 			
 			let genre = $(this).text();
-
-			circleClicked = true;
 			
-			if(circleClicked == false) {
+			let check = $(this).data("checked");
+			
+			if(check == true) {
+				
+				$(this).data("checked", false);
 
+				$.ajax({
+					type:"delete"
+					, url:"/music/delete/genre"
+					, data:{"genre":genre}
+					, success:function(data) {
+					
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("장르 삭제 실패");
+						}
+					}
+					,error:function() {
+						alert("장르 삭제 에러");
+					}
+				});
+				
+			} else {
+				
+				$(this).data("checked", true);
+				$(this).css("color", "white");
+				
 				$.ajax({
 					type:"post"
 					, url:"/music/select/genre"
 					, data:{"genre":genre}
 					, success:function(data) {
 						
-						circleClicked = true;
-						
 						if(data.result == "success") {
 							
 							clickCount ++;
-							
 							alert(genre + " 선택");
 							
 							if(clickCount >= 3) {
@@ -78,38 +98,12 @@
 					, error:function() {
 						alert("선택 에러");
 					}
-				});
-				
-			} else {
-				
-				$.ajax({
-					type:"delete"
-					, url:"/music/delete/genre"
-					, data:{"genre":genre}
-					, success:function(data) {
-				
-						circleClicked = false;
-						
-						if(data.result == "success") {
-							location.reload();
-						} else {
-							alert("장르 삭제 실패");
-						}
-					}
-					,error:function() {
-						alert("장르 삭제 에러");
-					}
-				});
-				
+				});	
 			}
-					
-			
+
 		});
 		
-		
 	});
-	
-	
 	
 	//범위 랜덤 함수(소수점 2자리까지)
 	function random(min, max) {
