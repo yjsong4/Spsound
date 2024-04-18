@@ -31,10 +31,9 @@ public class MusicService {
 	
 	public int deleteGenre(int userId, String genre) {
 		
+		musicRepository.selectGenre(userId, genre);
+		
 		return musicRepository.deleteGenre(userId, genre);
 	}
-	
-	
-
 	
 }

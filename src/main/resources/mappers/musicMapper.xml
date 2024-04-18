@@ -44,7 +44,7 @@
 			`genre`
 		WHERE
 			`userId` = #{userId}
-			`genre` = #{genre}
+			AND `genre` = #{genre}
 	</select>
 	
 	<delete id="deleteGenre" parameterType="map">
@@ -52,7 +52,7 @@
 			`genre`
 		WHERE
 			`userId` = #{userId}
-			`genre` = #{genre}
+			AND `genre` = #{genre}
 	</delete>
 	
 </mapper>

@@ -48,7 +48,6 @@ public class MusicRestController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		musicService.getGenreByUserIdAndGenre(userId, genre);
 		int count = musicService.deleteGenre(userId, genre);
 
 		Map<String, String> resultMap = new HashMap<>();

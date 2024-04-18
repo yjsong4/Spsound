@@ -1,13 +1,9 @@
 package com.syj.spsound.music;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.service.MusicService;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,14 +16,11 @@ public class MusicController {
 	
 	@GetMapping("/spsound/select-genre-view")
 	public String genre(
-			Model model
-			, HttpSession session) {
+			HttpSession session) {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<Genre> genreList = musicService.getGenreList(userId);
-		
-		model.addAttribute("genreList", genreList);
+		musicService.getGenreList(userId);
 		
 		return "music/genre";
 	}
