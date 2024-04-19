@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.syj.spsound.music.domain.Genre;
+import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.service.MusicService;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,7 +25,7 @@ public class MusicController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<Genre> genreList = musicService.getGenreList(userId);
+		List<Choice> genreList = musicService.getGenreList(userId);
 		
 		model.addAttribute("genreList", genreList);
 		

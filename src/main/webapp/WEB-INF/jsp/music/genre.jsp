@@ -14,8 +14,20 @@
 	<div id="wrap">
 	
 		<div class="circle-box position-relative">
-			<c:forEach var="genre" items="${genreList }">
-				<div class="circle" id="floating1">Pop</div>
+			<c:forEach var="genre" items="${genreList }" varStatus="status">
+				<c:choose>
+					<c:when test="${genre.checked eq true}">
+						<div class="circle text-white" id="floating${status.count }">${genre.name }</div>
+					</c:when>
+				
+					<c:otherwise>
+						<div class="circle" id="floating${status.count }">${genre.name }</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</div>
+				
+				<%-- 
 				<div class="circle" id="floating2">Hip Hop</div>
 				<div class="circle" id="floating3">Classical</div>
 				<div class="circle" id="floating4">Latin</div>
@@ -25,8 +37,9 @@
 				<div class="circle" id="floating8">Rock</div>
 				<div class="circle" id="floating9">Soul</div>
 				<div class="circle" id="floating10">Acoustic</div>
-			</c:forEach>
-		</div>
+				--%>
+			
+	
 		
 		<div class="d-flex justify-content-end">
 			<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>		
