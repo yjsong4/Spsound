@@ -163,13 +163,33 @@ a:visited {
 	background-color: black;
 }
 
-
-.menu-name {
+.name > a {
 	color: white;
 	font-size: 20px;
-	margin-top: 10px;
+	margin-top: 5px;
 	list-style-type: none;
-	
+	letter-spacing: 3px;
+}
+
+.name > a:hover {
+	color: #f1f06d;
+}
+
+.dropdown > a {
+	outline: none;
+}
+
+.dropdown-menu > a {
+	color: blue;
+	left: 50px;	
+}
+
+.content-box {
+	margin-top: 90px;
+}
+
+.playlist-box {
+	padding-right: 70px;
 }
 
 .img{
@@ -180,11 +200,31 @@ a:visited {
 .introduce {
 	width: 600px;
 	height: 50px;
+	font-weight: bold;
+	font-size: 20px;
+	letter-spacing: 3px;
+	font-style: italic;
 }
 
 .search {
-	width: 600px;
 	height: 50px;
+}
+
+.search-input {
+	border: none;
+	background-color: #f1f06d;
+}
+
+.search-input:focus {
+	border: 2px solid;
+	outline: none;
+	box-shadow:none !important;
+}
+
+.search-btn {
+	color: white;
+	background-color: #f1f06d;
+	letter-spacing: 2px;	
 }
 
 .music-box {
@@ -194,5 +234,7 @@ a:visited {
 
 .playlist {
 	width: 300px;
-	height: 300px;
+	height: 250px;
+	border: 1px solid;
+	margin-top: 50px;
 }

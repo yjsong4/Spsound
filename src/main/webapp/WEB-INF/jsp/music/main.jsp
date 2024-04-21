@@ -13,28 +13,36 @@
 
 	<div id="wrap">
 	
-		<div class="d-flex">
+		<div class="d-flex justify-content-between">
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
-					<li class="nav-item menu-name">Main<a class="nav-link" href="#"></a></li>
-					<li class="nav-item menu-name">Discover<a class="nav-link" href="#"></a></li>
-					<li class="nav-item menu-name">My Library<a class="nav-link" href="#"></a></li>
+					<li class="nav-item name"><a class="nav-link" href="#">Main</a></li>
+					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
+					<li class="nav-item name"><a class="nav-link" href="#">My Library</a></li>
 				</ul>
 			</nav>	
 		</div>
 		
-		<div class="d-flex justify-content-between">
-			<div class="img bg-secondary"></div>
+		<div class="content-box d-flex justify-content-between">
+			<img class="img bg-secondary" src="https://images.ctfassets.net/js6ap5wzepad/5r2jhT1LonYgfLVuB7UYoh/744f35dae83be88ba8239456345c924e/enterprise-image.png?w=700&fm=avif&q=80">
 			
-			<div class="pr-5">
-				<div class="introduce bg-dark"></div>
-				<div class="search bg-info"></div>
+			<div class="playlist-box">
+				<div class="introduce text-center">Experience new playlists in SPsound!</div>
 				
-				<div class="music-box bg-danger d-flex">
-					<div class="playlist bg-dark">1</div>
-					<div class="playlist bg-secondary">2</div>
-					<div class="playlist bg-dark">3</div>
+				<nav class="search">
+					<div>
+						<form class="d-flex">
+    						<input class="form-control mr-3 search-input" type="search">
+    						<button class="btn search-btn" type="submit">Search</button>
+  						</form>
+					</div>
+				</nav>
+
+				<div class="music-box d-flex text-center">
+					<div class="playlist">playlist1</div>
+					<div class="playlist">playlist2</div>
+					<div class="playlist">playlist3</div>
 				</div>
 				
 			</div>
