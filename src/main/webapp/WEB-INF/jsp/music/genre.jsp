@@ -21,7 +21,6 @@
 						<div class="circle text-white" id="floating${status.count }">${genre.name }</div>
 						<c:set var="genreCount" value="${genreCount + 1 }" />
 					</c:when>
-				
 					<c:otherwise>
 						<div class="circle" id="floating${status.count }">${genre.name }</div>
 					</c:otherwise>
@@ -55,7 +54,6 @@
 		$(".circle").on("click", function() {
 		
 			let genre = $(this).text();
-			
 			let check = $(this).data("checked");
 			
 			if(check == true) {
@@ -82,7 +80,6 @@
 			} else {
 				
 				$(this).data("checked", true);
-				$(this).css("color", "white");
 				
 				$.ajax({
 					type:"post"
@@ -104,7 +101,7 @@
 						}
 					}
 					, error:function() {
-						alert("선택 에러");
+						alert("장르 선택 에러");
 					}
 				});	
 			}

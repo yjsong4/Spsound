@@ -29,7 +29,6 @@ public class MusicRestController {
 		int userId = (Integer)session.getAttribute("userId");
 
 		int count = musicService.chooseGenre(userId, genre);
-		musicService.getGenreList(userId);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
@@ -80,6 +79,26 @@ public class MusicRestController {
 		}
 		
 		return resultMap;
+	}
+	
+	@DeleteMapping("/delete/artist")
+	public Map<String, String> deleteArtist(
+			@RequestParam("artist") String artist
+			, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = musicService.deleteArtist(userId, artist);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;		
 	}
 	
 }

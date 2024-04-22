@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.repository.MusicRepository;
@@ -58,9 +59,9 @@ public class MusicService {
 		
 		List<Genre> myGenre = musicRepository.selectGenreList(userId);
 		
-		for(Genre genre:myGenre) {
+		for(Choice genreChoice:choiceList) {
 			
-			for(Choice genreChoice:choiceList) {
+			for(Genre genre:myGenre) {
 				
 				if(genre.getGenre().equals(genreChoice.getName())) {
 					genreChoice.setChecked(true);
@@ -71,14 +72,7 @@ public class MusicService {
 		return choiceList;
 	}
 	
-	public Genre getGenreByUserIdAndGenre(int userId, String genre) {
-		
-		return musicRepository.selectGenre(userId, genre);
-	}
-	
 	public int deleteGenre(int userId, String genre) {
-		
-		musicRepository.selectGenre(userId, genre);
 		
 		return musicRepository.deleteGenre(userId, genre);
 	}
@@ -87,4 +81,59 @@ public class MusicService {
 		
 		return musicRepository.insertArtist(userId, artist);
 	}
+	
+	public List<Choice> getArtistList(int userId) {
+		
+		List<Choice> choiceList = new ArrayList<>();
+		
+		Choice choice = new Choice();
+		choice.setName("Taylor Swift");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Justin Bieber");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Ariana Grande");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("The Weeknd");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Beyonce");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Drake");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Billie Eilish");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Harry Styles");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Tame Impala");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Rihanna");
+		choiceList.add(choice);
+		
+		List<Artist> myArtist = musicRepository.selectArtistList(userId);
+		
+		for(Choice artistChoice:choiceList) {
+			for(Artist artist: myArtist) {
+				
+				if(artist.getArtist().equals(artistChoice.getName())) {
+					artistChoice.setChecked(true);
+				}
+			}
+		}
+		
+		return choiceList;
+	}
+	
+	public int deleteArtist(int userId, String artist) {
+		
+		return musicRepository.deleteArtist(userId, artist);	
+	}
+	
 }

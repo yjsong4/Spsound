@@ -69,4 +69,41 @@
 		)
 	</insert>
 	
+	<select id="selectArtistList"
+	parameterType="int" resultType="com.syj.spsound.music.domain.Artist">
+		SELECT
+			`id`
+			, `userId`
+			, `artist`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`artist`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
+	<select id="selectArtist"
+	parameterType="map" resultType="com.syj.spsound.music.domain.Artist">
+		SELECT
+			`id`
+			, `userId`
+			, `artist`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`artist`
+		WHERE
+			`userId` = #{userId}
+			AND `artist` = #{artist}
+	</select>
+	
+	<delete id="deleteArtist" parameterType="map">
+		DELETE FROM
+			`artist`
+		WHERE
+			`userId` = #{userId}
+			AND `artist` = #{artist}
+	</delete>
+	
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +8,34 @@
 <title>음악가선택</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 </head>
 <body>
 	<div id="wrap">
+	
 		<div class="circle-box position-relative">
-			<div class="circle" id="floating1">가수1</div>
-			<div class="circle" id="floating2">가수2</div>
-			<div class="circle" id="floating3">가수3</div>
-			<div class="circle" id="floating4">가수4</div>
-			<div class="circle" id="floating5">가수5</div>		
+			<c:forEach var="artist" items="${artistList }" varStatus="status">
+				<c:choose>
+					<c:when test="${artist.checked eq true }">
+						<div class="circle text-white" id="floating${status.count }">${artist.name }</div>
+						<c:set var="genreCount" value="${genreCount + 1 }" />
+					</c:when>
+					<c:otherwise>
+						<div class="circle" id="floating${status.count }">${artist.name }</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</div>
+		
+		<div class="d-flex justify-content-end">
+			<c:choose>
+				<c:when test="${genreCount >= 3 }">
+					<i class="bi bi-chevron-right next-btn" onclick="location.href='/spsound/main-view'"></i>
+				</c:when>
+				<c:otherwise>
+					<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/main-view'"></i>
+				</c:otherwise>
+			</c:choose>	
 		</div>
 	</div>
 
@@ -25,6 +45,68 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <script>
+	
+	$(document).ready(function() {
+		
+		var clickCount = 0;
+		
+		$(".circle").on("click", function() {
+			
+			let artist = $(this).text();
+			let check = $(this).data("checked");
+			
+			if(check == true) {
+				
+				$(this).data("checked", false);
+				
+				$.ajax({
+					type:"delete"
+					, url:"/music/delete/artist"
+					, data:{"artist":artist}
+					, success:function(data) {
+						
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("음악가 삭제 실패");
+						}
+					}
+					, error:function() {
+						alert("음악가 삭제 에러");
+					}
+				});
+				
+			} else {
+				
+				$(this).data("checked", true);
+				
+				$.ajax({
+					type:"post"
+					, url:"/music/select/artist"
+					, data:{"artist":artist}
+					, success:function(data) {
+						
+						if(data.result == "success") {
+							
+							clickCount ++;
+							alert(artist + " 선택");
+							
+							if(clickCount >= 3) {
+								$(".next-btn").removeClass("d-none");
+							}
+						} else {
+							alert("음악가 저장 실패");
+						}
+					}
+					, error:function() {
+						alert("음악가 선택 에러");
+					}
+				});
+			}
+			
+		});
+		
+	});
 
 	//범위 랜덤 함수(소수점 2자리까지)
 	function random(min, max) {
@@ -49,7 +131,11 @@
 	floatingObject('#floating3',1.5,20)
 	floatingObject('#floating4',1.5,20)
 	floatingObject('#floating5',.2,15)
-
+	floatingObject('#floating6',.2,15)
+	floatingObject('#floating7',.2,15)
+	floatingObject('#floating8',.2,15)
+	floatingObject('#floating9',.2,15)
+	floatingObject('#floating10',.2,15)
 </script>
 
 </body>
