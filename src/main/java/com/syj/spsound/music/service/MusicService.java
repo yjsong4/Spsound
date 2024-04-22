@@ -23,45 +23,48 @@ public class MusicService {
 	
 	public List<Choice> getGenreList(int userId) {
 		
-		List<Genre> genreList = new ArrayList<>();
-
 		List<Choice> choiceList = new ArrayList<>();
 		
-		for(Genre genre:genreList) {
-
-//			genre.setGenre("Pop");
-//			genre = new Genre();
-//			genre.setGenre("Hip Hop");
-//			genre = new Genre();
-//			genre.setGenre("Classical");
-//			genre = new Genre();
-//			genre.setGenre("Latin");
-//			genre = new Genre();
-//			genre.setGenre("Jazz");
-//			genre = new Genre();
-//			genre.setGenre("RnB");
-//			genre = new Genre();
-//			genre.setGenre("Rock");
-//			genre = new Genre();
-//			genre.setGenre("Soul");
-//			genre = new Genre();
-//			genre.setGenre("Country");
-//			genre = new Genre();
-//			genre.setGenre("Acoustic");
-//			
-//			genreList.add(genre);
+		Choice choice = new Choice();
+		choice.setName("Pop");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Hip Hop");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Classical");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Latin");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Jazz");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("RnB");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Country");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Rock");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Soul");
+		choiceList.add(choice);
+		choice = new Choice();
+		choice.setName("Acoustic");
+		choiceList.add(choice);
+		
+		List<Genre> myGenre = musicRepository.selectGenreList(userId);
+		
+		for(Genre genre:myGenre) {
 			
-			for(Choice choice:choiceList) {
+			for(Choice genreChoice:choiceList) {
 				
-				choice.setName(genre.getGenre());
-				
-				List<Genre> myGenre = musicRepository.selectGenreList(userId);
-				
-				if(myGenre.contains(genre)) {
-					choice.setChecked(true);
+				if(genre.getGenre().equals(genreChoice.getName())) {
+					genreChoice.setChecked(true);
 				}
-
-				choiceList.add(choice);
 			}
 		}
 		

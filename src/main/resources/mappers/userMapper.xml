@@ -42,4 +42,6 @@
 			`email` = #{email}
 	</select>
 	
+	<select id="gerUser"></select>
+	
 </mapper>

@@ -14,10 +14,12 @@
 	<div id="wrap">
 	
 		<div class="circle-box position-relative">
+			<c:set var="genreCount" value="0" />
 			<c:forEach var="genre" items="${genreList }" varStatus="status">
 				<c:choose>
 					<c:when test="${genre.checked eq true}">
 						<div class="circle text-white" id="floating${status.count }">${genre.name }</div>
+						<c:set var="genreCount" value="${genreCount + 1 }" />
 					</c:when>
 				
 					<c:otherwise>
@@ -26,23 +28,16 @@
 				</c:choose>
 			</c:forEach>
 		</div>
-				
-				<%-- 
-				<div class="circle" id="floating2">Hip Hop</div>
-				<div class="circle" id="floating3">Classical</div>
-				<div class="circle" id="floating4">Latin</div>
-				<div class="circle" id="floating5">Jazz</div>
-				<div class="circle" id="floating6">RnB</div>
-				<div class="circle" id="floating7">Country</div>
-				<div class="circle" id="floating8">Rock</div>
-				<div class="circle" id="floating9">Soul</div>
-				<div class="circle" id="floating10">Acoustic</div>
-				--%>
-			
-	
 		
 		<div class="d-flex justify-content-end">
-			<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>		
+			<c:choose>
+				<c:when test="${genreCount >= 3 }">
+					<i class="bi bi-chevron-right next-btn" onclick="location.href='/spsound/select-artist-view'"></i>
+				</c:when>
+				<c:otherwise>
+					<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>
+				</c:otherwise>
+			</c:choose>	
 		</div>
 	</div>
 
@@ -119,7 +114,6 @@
 	});
 	
 
-	
 	//범위 랜덤 함수(소수점 2자리까지)
 	function random(min, max) {
 	  // `.toFixed()`를 통해 반환된 문자 데이터를,
