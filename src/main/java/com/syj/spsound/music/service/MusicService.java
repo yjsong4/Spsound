@@ -96,7 +96,7 @@ public class MusicService {
 		choice.setName("Ariana Grande");
 		choiceList.add(choice);
 		choice = new Choice();
-		choice.setName("The Weeknd");
+		choice.setName("Bad Bunny");
 		choiceList.add(choice);
 		choice = new Choice();
 		choice.setName("Beyonce");

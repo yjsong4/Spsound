@@ -27,16 +27,24 @@
 			</c:forEach>
 		</div>
 		
-		<div class="d-flex justify-content-end">
-			<c:choose>
-				<c:when test="${genreCount >= 3 }">
-					<i class="bi bi-chevron-right next-btn" onclick="location.href='/spsound/main-view'"></i>
-				</c:when>
-				<c:otherwise>
-					<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/main-view'"></i>
-				</c:otherwise>
-			</c:choose>	
+		
+		<div class="d-flex justify-content-between dd">
+			<div>
+				<i class="bi bi-chevron-left next-btn" onclick="location.href='/spsound/select-genre-view'"></i>
+			</div>
+		
+			<div>
+				<c:choose>
+					<c:when test="${genreCount >= 3 }">
+						<i class="bi bi-chevron-right next-btn" onclick="location.href='/spsound/main-view'"></i>
+					</c:when>
+					<c:otherwise>
+						<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/main-view'"></i>
+					</c:otherwise>
+				</c:choose>	
+			</div>
 		</div>
+		
 	</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
