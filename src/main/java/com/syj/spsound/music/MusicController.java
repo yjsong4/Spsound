@@ -29,8 +29,6 @@ public class MusicController {
 		
 		model.addAttribute("genreList", genreList);
 		
-		musicService.getGenreList(userId);
-		
 		return "music/genre";
 	}
 	

@@ -55,4 +55,18 @@
 			AND `genre` = #{genre}
 	</delete>
 	
+	<insert id="insertArtist" parameterType="map">
+		INSERT INTO
+			`artist`
+		(
+			`userId`
+			, `artist`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{artist}
+		)
+	</insert>
+	
 </mapper>

@@ -62,4 +62,24 @@ public class MusicRestController {
 		return resultMap;
 	}
 	
+	@PostMapping("/select/artist")
+	public Map<String, String> chooseArtist(
+			@RequestParam("artist") String artist
+			, HttpSession session) {
+		
+		int userId = (Integer) session.getAttribute("userId");
+		
+		int count = musicService.chooseArtist(userId, artist);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 }

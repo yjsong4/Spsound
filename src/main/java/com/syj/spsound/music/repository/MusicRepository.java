@@ -1,4 +1,4 @@
- package com.syj.spsound.music.repository;
+package com.syj.spsound.music.repository;
 
 import java.util.List;
 
@@ -17,5 +17,10 @@ public interface MusicRepository {
 	public Genre selectGenre(@Param("userId") int userId, @Param("genre") String genre);
 	
 	public int deleteGenre(@Param("userId") int userId, @Param("genre") String genre);
+	
+	
+	public int insertArtist(@Param("userId") int userId, @Param("artist") String artist);
+	
+	
 
 }
