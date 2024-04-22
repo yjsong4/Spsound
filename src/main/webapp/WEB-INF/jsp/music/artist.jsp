@@ -27,19 +27,18 @@
 			</c:forEach>
 		</div>
 		
-		
-		<div class="d-flex justify-content-between dd">
+		<div class="d-flex">
 			<div>
-				<i class="bi bi-chevron-left next-btn" onclick="location.href='/spsound/select-genre-view'"></i>
+				<i class="bi bi-chevron-left left-btn" onclick="location.href='/spsound/select-genre-view'"></i>
 			</div>
 		
 			<div>
 				<c:choose>
 					<c:when test="${genreCount >= 3 }">
-						<i class="bi bi-chevron-right next-btn" onclick="location.href='/spsound/main-view'"></i>
+						<i class="bi bi-chevron-right right-btn" onclick="location.href='/spsound/main-view'"></i>
 					</c:when>
 					<c:otherwise>
-						<i class="bi bi-chevron-right next-btn d-none" onclick="location.href='/spsound/main-view'"></i>
+						<i class="bi bi-chevron-right right-btn d-none" onclick="location.href='/spsound/main-view'"></i>
 					</c:otherwise>
 				</c:choose>	
 			</div>
@@ -98,9 +97,10 @@
 							
 							clickCount ++;
 							alert(artist + " 선택");
+							location.reload();
 							
 							if(clickCount >= 3) {
-								$(".next-btn").removeClass("d-none");
+								$(".right-btn").removeClass("d-none");
 							}
 						} else {
 							alert("음악가 저장 실패");

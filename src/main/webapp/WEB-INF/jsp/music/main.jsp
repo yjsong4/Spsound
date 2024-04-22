@@ -28,7 +28,7 @@
 			<img class="img bg-secondary" src="https://images.ctfassets.net/js6ap5wzepad/5r2jhT1LonYgfLVuB7UYoh/744f35dae83be88ba8239456345c924e/enterprise-image.png?w=700&fm=avif&q=80">
 			
 			<div class="playlist-box">
-				<div class="introduce text-center">Experience new playlists in SPsound!</div>
+				<div class="introduce">Experience new playlists in SPsound!</div>
 				
 				<nav class="search">
 					<div>
