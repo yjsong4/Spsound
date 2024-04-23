@@ -33,6 +33,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
+	
+	implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
+}
+
+allprojects {
+    repositories {
+    	mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
 tasks.named('test') {
