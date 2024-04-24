@@ -17,7 +17,6 @@ public class SpotifyService {
     private static final String CLIENT_SECRET = "38ceb3923c414ca6ae5a00ea6fc15fb3";
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder().setClientId(CLIENT_ID).setClientSecret(CLIENT_SECRET).build();
 
-
     public static String accesstoken() {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
         try {
@@ -31,13 +30,5 @@ public class SpotifyService {
             return "error";
         }
     }
-	
-	public void GetSpotifyApi() {
-		
-//		String accessToken = SpotifyToken.accesstoken();
-				
-		spotifyApi.setAccessToken(accesstoken());
 
-		spotifyApi.getAccessToken();
-	}	
 }
