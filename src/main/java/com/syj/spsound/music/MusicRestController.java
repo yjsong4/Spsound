@@ -116,11 +116,11 @@ public class MusicRestController {
 		return resultMap;		
 	}
 	
-	@GetMapping("/spotify/token")
-	public String token() {
-		
-		return SpotifyService.accesstoken();	
-	}
+//	@GetMapping("/spotify/token")
+//	public String token() {
+//		
+//		return SpotifyService.accesstoken();	
+//	}
 	
 	@GetMapping("/spotify/search")
 	public Paging<Track> search() throws ParseException, SpotifyWebApiException, IOException {
@@ -128,9 +128,7 @@ public class MusicRestController {
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
-		
-//		spotifyApi.setAccessToken(accessToken);
-				
+						
 		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(q)
                 .limit(10)
                 .build();
@@ -138,7 +136,6 @@ public class MusicRestController {
 		Paging<Track> searchResult = searchTrackRequest.execute();
 		
 		return searchResult;
-
 	}
 	
 }
