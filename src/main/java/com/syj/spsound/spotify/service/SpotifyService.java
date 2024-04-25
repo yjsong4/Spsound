@@ -64,18 +64,25 @@ public class SpotifyService {
 			AlbumSimplified album = track.getAlbum();
 			ArtistSimplified[] artists = album.getArtists();
 			
+			ArrayList<String> aritstInfoUrlList = new ArrayList<>();
+			ArrayList<String> artistNameList = new ArrayList<>();
+			
 			String aritstInfoUrl = "";
 			String artistName = "";
+
 			for(ArtistSimplified artist:artists) {
 				aritstInfoUrl = artist.getExternalUrls().getExternalUrls().get("spotify");
 				artistName = artist.getName();
+				
+				aritstInfoUrlList.add(aritstInfoUrl);
+				artistNameList.add(artistName);
 			}
 		
 			String albumName = album.getName();
 			
 			result.setAlbumName(albumName);
-			result.setArtistName(artistName);
-			result.setArtistInfoUrl(aritstInfoUrl);
+			result.setArtistNameList(artistNameList);
+			result.setAritstInfoUrlList(aritstInfoUrlList);
 			result.setSongTitle(songTitle);
 			
 			searchResultList.add(result);
