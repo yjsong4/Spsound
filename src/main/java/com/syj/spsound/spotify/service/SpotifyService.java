@@ -1,14 +1,22 @@
 package com.syj.spsound.spotify.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.stereotype.Service;
 
+import com.syj.spsound.music.dto.SearchResult;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 @Service
 public class SpotifyService {
@@ -30,5 +38,51 @@ public class SpotifyService {
             return "error";
         }
     }
+    
+	public List<SearchResult> search(String keyword) throws ParseException, SpotifyWebApiException, IOException {
+		
+		SpotifyApi spotifyApi = new SpotifyApi.Builder()
+	            .setAccessToken(SpotifyService.accesstoken())
+	            .build();
+						
+		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(keyword)
+                .limit(1)
+                .build();
+		
+		List<SearchResult> searchResultList = new ArrayList<>();
+		
+		Paging<Track> searchResult = searchTrackRequest.execute();
+		
+		Track[] tracks = searchResult.getItems();
+		
+		for(Track track:tracks) {
+			
+			SearchResult result = new SearchResult();
+			
+			String songTitle = track.getName();
+			
+			AlbumSimplified album = track.getAlbum();
+			ArtistSimplified[] artists = album.getArtists();
+			
+			String aritstInfoUrl = "";
+			String artistName = "";
+			for(ArtistSimplified artist:artists) {
+				aritstInfoUrl = artist.getExternalUrls().getExternalUrls().get("spotify");
+				artistName = artist.getName();
+			}
+		
+			String albumName = album.getName();
+			
+			result.setAlbumName(albumName);
+			result.setArtistName(artistName);
+			result.setArtistInfoUrl(aritstInfoUrl);
+			result.setSongTitle(songTitle);
+			
+			searchResultList.add(result);
+		}
+
+		 return searchResultList;
+	}
+    
 
 }

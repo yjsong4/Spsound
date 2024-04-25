@@ -2,6 +2,7 @@ package com.syj.spsound.music;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.hc.core5.http.ParseException;
@@ -13,13 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.specification.Track;
-import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -34,7 +32,7 @@ public class MusicRestController {
 	private SpotifyService spotifyService;
 	
 //	private static final String accessToken = "BQDcSFF1JUi3-lWhBkr2wsAMBHQxsPTGr7U7a0fHPJ1j6S8C6Lszp8vz61fRPodN29VvH9oGrm7nbVJwxA1qQTKmiSYK09Oe_7iZaHIyyFJY3xxV3i0";
-	private static final String q = "Taylor Swift";
+//	private static final String keyword = "Pop";  // artist, year, album, genre, track ...
 
 	@PostMapping("/select/genre")
 	public Map<String, String> chooseGenre(
@@ -123,19 +121,9 @@ public class MusicRestController {
 //	}
 	
 	@GetMapping("/spotify/search")
-	public Paging<Track> search() throws ParseException, SpotifyWebApiException, IOException {
+	public List<SearchResult> search(@RequestParam("keyword") String keyword) throws ParseException, SpotifyWebApiException, IOException {
 		
-		SpotifyApi spotifyApi = new SpotifyApi.Builder()
-	            .setAccessToken(SpotifyService.accesstoken())
-	            .build();
-						
-		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(q)
-                .limit(10)
-                .build();
-		
-		Paging<Track> searchResult = searchTrackRequest.execute();
-		
-		return searchResult;
+		return spotifyService.search(keyword);
 	}
 	
 }
