@@ -29,7 +29,7 @@ public class SpotifyService {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
         try {
             final ClientCredentials clientCredentials = clientCredentialsRequest.execute();
-            // Set access token for further "spotifyApi" object usage
+
             spotifyApi.setAccessToken(clientCredentials.getAccessToken());
             return spotifyApi.getAccessToken();
 
@@ -46,11 +46,7 @@ public class SpotifyService {
 	            .build();
 						
 		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(keyword)
-<<<<<<< HEAD
-                .limit(3)
-=======
                 .limit(10)
->>>>>>> ed648341167fc5bfa875b8a05154a298d73c2b8d
                 .build();
 		
 		List<SearchResult> searchResultList = new ArrayList<>();

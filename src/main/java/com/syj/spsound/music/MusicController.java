@@ -29,9 +29,6 @@ public class MusicController {
 	@Autowired
 	private SpotifyService spotifyService;
 	
-	@Autowired
-	private SpotifyService spotifyService;
-	
 	@GetMapping("/select-genre-view")
 	public String genre(
 			Model model
@@ -66,27 +63,13 @@ public class MusicController {
 		return "music/main";
 	}
 	
-<<<<<<< HEAD
-	@GetMapping("/list-view")
-	public String listPage(Model model) throws ParseException, SpotifyWebApiException, IOException {
-	
-		String keyword = "pop";
-		
-		List<SearchResult> searchResultList = spotifyService.search(keyword);
-		
-		model.addAttribute("searchResultList", searchResultList);
-		
-		return "music/test";
-=======
 	@GetMapping("/tracklist-view")
 	public String trackList(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		List<SearchResult> searchResultList = spotifyService.searchByKeyword(keyword);
-		
 		model.addAttribute("searchResultList", searchResultList);
 		
 		return "music/tracklist";
->>>>>>> ed648341167fc5bfa875b8a05154a298d73c2b8d
 	}
 
 }
