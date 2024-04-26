@@ -39,14 +39,18 @@ public class SpotifyService {
         }
     }
     
-	public List<SearchResult> search(String keyword) throws ParseException, SpotifyWebApiException, IOException {
+	public List<SearchResult> searchByKeyword(String keyword) throws ParseException, SpotifyWebApiException, IOException {
 		
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
 						
 		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(keyword)
+<<<<<<< HEAD
                 .limit(3)
+=======
+                .limit(10)
+>>>>>>> ed648341167fc5bfa875b8a05154a298d73c2b8d
                 .build();
 		
 		List<SearchResult> searchResultList = new ArrayList<>();
@@ -86,10 +90,11 @@ public class SpotifyService {
 			result.setSongTitle(songTitle);
 			
 			searchResultList.add(result);
+			
+			result.setArtistNameList(artistNameList);
 		}
-
+		
 		 return searchResultList;
 	}
     
-
 }

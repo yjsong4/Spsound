@@ -136,4 +136,9 @@ public class MusicService {
 		return musicRepository.deleteArtist(userId, artist);	
 	}
 	
+	public int searchByKeyword(int userId, String keyword) {
+		
+		return musicRepository.insertKeyword(userId, keyword);
+	}
+	
 }

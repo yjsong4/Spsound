@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.SearchResult;
@@ -25,6 +26,9 @@ public class MusicController {
 	@Autowired
 	private MusicService musicService;
 
+	@Autowired
+	private SpotifyService spotifyService;
+	
 	@Autowired
 	private SpotifyService spotifyService;
 	
@@ -62,6 +66,7 @@ public class MusicController {
 		return "music/main";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/list-view")
 	public String listPage(Model model) throws ParseException, SpotifyWebApiException, IOException {
 	
@@ -72,6 +77,16 @@ public class MusicController {
 		model.addAttribute("searchResultList", searchResultList);
 		
 		return "music/test";
+=======
+	@GetMapping("/tracklist-view")
+	public String trackList(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
+		
+		List<SearchResult> searchResultList = spotifyService.searchByKeyword(keyword);
+		
+		model.addAttribute("searchResultList", searchResultList);
+		
+		return "music/tracklist";
+>>>>>>> ed648341167fc5bfa875b8a05154a298d73c2b8d
 	}
 
 }

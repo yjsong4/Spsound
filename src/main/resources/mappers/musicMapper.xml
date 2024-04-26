@@ -106,4 +106,18 @@
 			AND `artist` = #{artist}
 	</delete>
 	
+	<insert id="insertKeyword" parameterType="map">
+		INSERT INTO
+			`keyword`
+		(
+			`userId`
+			, `keyword`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{keyword}
+		)
+	</insert>
+	
 </mapper>

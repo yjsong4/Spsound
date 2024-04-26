@@ -27,4 +27,6 @@ public interface MusicRepository {
 	
 	public int deleteArtist(@Param("userId") int userId, @Param("artist") String artist);
 	
+	public int insertKeyword(@Param("userId") int userId, @Param("keyword") String keyword);
+	
 }
