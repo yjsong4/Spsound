@@ -123,7 +123,29 @@ public class MusicRestController {
 	@GetMapping("/spotify/search")
 	public List<SearchResult> search(@RequestParam("keyword") String keyword) throws ParseException, SpotifyWebApiException, IOException {
 		
-		return spotifyService.search(keyword);
+		return spotifyService.searchByKeyword(keyword);
+	}
+	
+	@PostMapping("/search/keyword")
+	public Map<String, String> searchByKeyword(
+			@RequestParam("keyword") String keyword
+			, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = musicService.searchByKeyword(userId, keyword);
+		
+		//spotifyService.searchByKeyword(keyword);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
 	}
 	
 }

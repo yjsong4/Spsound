@@ -39,7 +39,7 @@ public class SpotifyService {
         }
     }
     
-	public List<SearchResult> search(String keyword) throws ParseException, SpotifyWebApiException, IOException {
+	public List<SearchResult> searchByKeyword(String keyword) throws ParseException, SpotifyWebApiException, IOException {
 		
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())

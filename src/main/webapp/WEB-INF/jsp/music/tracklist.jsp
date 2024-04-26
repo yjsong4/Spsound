@@ -17,7 +17,7 @@
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
-					<li class="nav-item name"><a class="nav-link" href="#">Main</a></li>
+					<li class="nav-item name"><a class="nav-link" href="http://localhost:8080/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
 					<li class="nav-item name"><a class="nav-link" href="#">My Library</a></li>
 				</ul>
@@ -31,6 +31,7 @@
 					<th>Album</th>
 					<th>Artist</th>
 					<th>InfoUrl</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,10 +41,10 @@
 					<td>${result.albumName }</td>
 					<td>${result.artistNameList }</td>
 					<td>${result.aritstInfoUrlList }</td>
+					<td><button type="button" class="btn btn-block">add</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
-		
 		</table>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -52,6 +53,8 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
 
+</script>
 </body>
 </html>

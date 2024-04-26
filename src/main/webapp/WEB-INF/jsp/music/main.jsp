@@ -32,9 +32,9 @@
 				
 				<nav class="search">
 					<div>
-						<form class="d-flex">
-    						<input class="form-control mr-3 search-input" type="search">
-    						<button class="btn search-btn" type="submit">Search</button>
+						<form class="d-flex" action="/spsound/tracklist-view" method="get">
+    						<input class="form-control mr-3 search-input" type="text" name="keyword">
+    						<button class="btn search-btn" id="searchBtn" type="submit">Search</button>
   						</form>
 					</div>
 				</nav>
@@ -57,15 +57,12 @@
 <script>
 	
 	$(document).ready(function() {
+		
 	
-		
-		
-		
 		
 	});
 	
 </script>
-
 
 </body>
 </html>
