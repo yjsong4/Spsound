@@ -122,8 +122,8 @@ public class MusicRestController {
 	
 	@GetMapping("/spotify/search")
 	public List<SearchResult> search(@RequestParam("keyword") String keyword) throws ParseException, SpotifyWebApiException, IOException {
-		
-		return spotifyService.search(keyword);
+				
+		return spotifyService.search(keyword);		
 	}
 	
 }
