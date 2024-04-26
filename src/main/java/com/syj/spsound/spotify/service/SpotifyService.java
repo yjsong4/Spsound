@@ -46,7 +46,7 @@ public class SpotifyService {
 	            .build();
 						
 		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(keyword)
-                .limit(1)
+                .limit(10)
                 .build();
 		
 		List<SearchResult> searchResultList = new ArrayList<>();
@@ -86,10 +86,11 @@ public class SpotifyService {
 			result.setSongTitle(songTitle);
 			
 			searchResultList.add(result);
+			
+			result.setArtistNameList(artistNameList);
 		}
-
+		
 		 return searchResultList;
 	}
     
-
 }
