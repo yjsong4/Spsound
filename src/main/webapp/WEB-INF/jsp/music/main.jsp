@@ -58,12 +58,7 @@
 	
 	$(document).ready(function() {
 		
-	
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> ed648341167fc5bfa875b8a05154a298d73c2b8d
 	});
 	
 </script>

@@ -67,9 +67,10 @@ public class MusicController {
 	public String trackList(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		List<SearchResult> searchResultList = spotifyService.searchByKeyword(keyword);
+		
 		model.addAttribute("searchResultList", searchResultList);
 		
 		return "music/tracklist";
 	}
-
+	
 }

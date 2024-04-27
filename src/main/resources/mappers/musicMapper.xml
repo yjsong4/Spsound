@@ -120,4 +120,32 @@
 		)
 	</insert>
 	
+	<insert id="insertPlaylist" parameterType="map">
+		INSERT INTO
+			`playlist`
+		(
+			`userId`
+			, `musicId`
+		)
+		VALUE
+		(
+			#{userId}
+			, #{musicId}
+		)
+	</insert>
+		
+	<select id="selectPlaylist"
+	parameterType="int" resultType="com.syj.spsound.music.dto.SearchResult">
+		SELECT
+			`id`
+			, `userId`
+			, `musicId`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`playlist`
+		WHERE
+			`userId` = #{userId}
+	</select>
+	
 </mapper>

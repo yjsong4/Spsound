@@ -60,10 +60,12 @@ public class SpotifyService {
 			SearchResult result = new SearchResult();
 			
 			String songTitle = track.getName();
+			String musicId = track.getId();
 			
 			AlbumSimplified album = track.getAlbum();
 			ArtistSimplified[] artists = album.getArtists();
-			
+			String albumName = album.getName();
+
 			ArrayList<String> aritstInfoUrlList = new ArrayList<>();
 			ArrayList<String> artistNameList = new ArrayList<>();
 			
@@ -78,12 +80,11 @@ public class SpotifyService {
 				artistNameList.add(artistName);
 			}
 		
-			String albumName = album.getName();
-			
 			result.setAlbumName(albumName);
 			result.setArtistNameList(artistNameList);
 			result.setAritstInfoUrlList(aritstInfoUrlList);
 			result.setSongTitle(songTitle);
+			result.setMusicId(musicId);
 			
 			searchResultList.add(result);
 			

@@ -127,17 +127,35 @@ public class MusicRestController {
 		return spotifyService.searchByKeyword(keyword);
 	}
 	
-	@PostMapping("/search/keyword")
-	public Map<String, String> searchByKeyword(
+	@PostMapping("/add/keyword")
+	public Map<String, String> addKeyword(
 			@RequestParam("keyword") String keyword
 			, HttpSession session) {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = musicService.searchByKeyword(userId, keyword);
+		int count = musicService.addKeyword(userId, keyword);
+				
+		Map<String, String> resultMap = new HashMap<>();
 		
-		//spotifyService.searchByKeyword(keyword);
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
 		
+		return resultMap;
+	}
+	
+	@PostMapping("/add/playlist")
+	public Map<String, String> addPlaylist(
+			@RequestParam("musicId") String musicId
+			, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = musicService.addPlaylist(userId, musicId);
+				
 		Map<String, String> resultMap = new HashMap<>();
 		
 		if(count == 1) {

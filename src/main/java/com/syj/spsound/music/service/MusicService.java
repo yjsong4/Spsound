@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.dto.Choice;
+import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.repository.MusicRepository;
 
 @Service
@@ -136,9 +137,18 @@ public class MusicService {
 		return musicRepository.deleteArtist(userId, artist);	
 	}
 	
-	public int searchByKeyword(int userId, String keyword) {
+	public int addKeyword(int userId, String keyword) {
 		
 		return musicRepository.insertKeyword(userId, keyword);
 	}
 	
+	public int addPlaylist(int userId, String musicId) {
+		
+		return musicRepository.insertPlaylist(userId, musicId);
+	}
+	
+	public List<SearchResult> getPlaylist(int userId) {
+	
+		return musicRepository.selectPlaylist(userId);
+	}
 }
