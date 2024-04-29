@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.syj.spsound.music.dto.SearchResult;
+import com.syj.spsound.music.repository.MusicRepository;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
@@ -25,6 +27,9 @@ public class SpotifyService {
     private static final String CLIENT_SECRET = "38ceb3923c414ca6ae5a00ea6fc15fb3";
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder().setClientId(CLIENT_ID).setClientSecret(CLIENT_SECRET).build();
 
+    @Autowired
+    private MusicRepository musicRepository;
+    
     public static String accesstoken() {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
         try {
@@ -92,6 +97,50 @@ public class SpotifyService {
 		}
 		
 		 return searchResultList;
+	}
+	
+	public List<SearchResult> getPlaylist(int userId, String musicId) throws ParseException, SpotifyWebApiException, IOException {
+		
+		SpotifyApi spotifyApi = new SpotifyApi.Builder()
+	            .setAccessToken(SpotifyService.accesstoken())
+	            .build();
+						
+		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(musicId)
+                .build();
+		
+		List<SearchResult> playlist = musicRepository.selectPlaylist(userId);
+		
+		Paging<Track> searchResult = searchTrackRequest.execute();
+		
+		Track[] tracks = searchResult.getItems();
+		
+		for(Track track:tracks) {
+			
+			SearchResult result = new SearchResult();
+			
+			String songTitle = track.getName();
+			
+			AlbumSimplified album = track.getAlbum();
+			ArtistSimplified[] artists = album.getArtists();
+			
+			String albumName = album.getName();
+			
+			String artistName = "";
+			ArrayList<String> artistNameList = new ArrayList<>();
+			for(ArtistSimplified artist:artists) {
+				artistName = artist.getName();
+				
+				artistNameList.add(artistName);
+			}
+			
+			result.setAlbumName(albumName);
+			result.setArtistNameList(artistNameList);
+			result.setSongTitle(songTitle);
+			
+			playlist.add(result);
+		}
+		
+		return playlist;
 	}
     
 }

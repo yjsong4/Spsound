@@ -64,7 +64,7 @@ public class MusicController {
 	}
 	
 	@GetMapping("/tracklist-view")
-	public String trackList(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
+	public String tracklist(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		List<SearchResult> searchResultList = spotifyService.searchByKeyword(keyword);
 		
@@ -73,4 +73,15 @@ public class MusicController {
 		return "music/tracklist";
 	}
 	
+	@GetMapping("/playlist-view")
+	public String playlist(@RequestParam("musicId") String musicId, Model model, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+		
+		int userId = (Integer)session.getAttribute("userId");
+
+		List<SearchResult> playlist = spotifyService.getPlaylist(userId, musicId);
+		
+		model.addAttribute("playlist", playlist);
+		
+		return "music/playlist";
+	}
 }

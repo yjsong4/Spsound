@@ -30,19 +30,16 @@
 					<th>Title</th>
 					<th>Album</th>
 					<th>Artist</th>
-					<th>InfoUrl</th>
-					<th></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="result" items="${searchResultList }">
+				<c:forEach var="playlist" items="${playlist }">
 				<tr>
+					<td>${playlist.songTitle }</td>
+					<td>${playlist.albumName }</td>
 					<td></td>
-					<td></td>
-					<td></td>
-
-					<td><button type="button" class="btn btn-block" data-music-id="${result.musicId }"></button></td>
+					<td><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }">add</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>

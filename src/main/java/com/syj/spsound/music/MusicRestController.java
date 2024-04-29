@@ -167,4 +167,12 @@ public class MusicRestController {
 		return resultMap;
 	}
 	
+//	@GetMapping("/mylist")
+//	public List<SearchResult> playlist(@RequestParam("musicId") String musicId, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+//		
+//		int userId = (Integer)session.getAttribute("userId");
+//		
+//		return spotifyService.getPlaylist(userId, musicId);
+//	}
+	
 }
