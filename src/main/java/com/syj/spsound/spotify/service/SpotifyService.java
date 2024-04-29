@@ -52,7 +52,7 @@ public class SpotifyService {
 	            .build();
 						
 		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(keyword)
-                .limit(10)
+                .limit(50)
                 .build();
 		
 		List<SearchResult> searchResultList = new ArrayList<>();
@@ -115,37 +115,36 @@ public class SpotifyService {
 		List<String> musicIdList = musicService.musicIdList(userId);
 
 		List<SearchResult> playlist = new ArrayList<>();
-
+		
 		for(int i = 0; i < musicIdList.size(); i++) {
-
+			
 			GetTrackRequest getTrackRequest = spotifyApi.getTrack(musicIdList.get(i))
 					.build();
 			
 			Track track = getTrackRequest.execute();
 			
-			for(SearchResult trackResult:playlist) {
-				
-				String songTitle = track.getName();
-				
-				AlbumSimplified albums = track.getAlbum();
-				String albumName = albums.getName();
-				
-				ArtistSimplified[] artists = track.getArtists();		
-				
-				ArrayList<String> artistNameList = new ArrayList<>();
-				
-				for(ArtistSimplified artist:artists) {
-					String artistName = artist.getName();
-					artistNameList.add(artistName);
-				}
-				
-				trackResult.setSongTitle(songTitle);
-				trackResult.setArtistNameList(artistNameList);
-				trackResult.setAlbumName(albumName);
-				
-				playlist.add(trackResult);
+			SearchResult trackResult = new SearchResult();
+			
+			String songTitle = track.getName();
+			
+			AlbumSimplified albums = track.getAlbum();
+			String albumName = albums.getName();
+			
+			ArtistSimplified[] artists = track.getArtists();		
+			
+			ArrayList<String> artistNameList = new ArrayList<>();
+			
+			for(ArtistSimplified artist:artists) {
+				String artistName = artist.getName();
+				artistNameList.add(artistName);
 			}
 			
+			trackResult.setMusicId(musicIdList.get(i));
+			trackResult.setSongTitle(songTitle);
+			trackResult.setArtistNameList(artistNameList);
+			trackResult.setAlbumName(albumName);
+			
+			playlist.add(trackResult);
 		}
 		
 		return playlist;

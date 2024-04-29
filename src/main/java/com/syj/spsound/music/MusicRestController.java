@@ -161,11 +161,12 @@ public class MusicRestController {
 		return resultMap;
 	}
 
-	@GetMapping("/musicids")
-	public List<SearchResult> musicId(HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
-		
-		int userId = (Integer)session.getAttribute("userId");
-		
-		return spotifyService.getPlaylist(userId);
-	}
+//	@GetMapping("/musicids")
+//	public List<SearchResult> musicId(HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+//		
+//		int userId = (Integer)session.getAttribute("userId");
+//		
+//		return spotifyService.getPlaylist(userId);
+//	}
+	
 }

@@ -17,9 +17,9 @@
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
-					<li class="nav-item name"><a class="nav-link" href="http://localhost:8080/spsound/main-view">Main</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
-					<li class="nav-item name"><a class="nav-link" href="#">My Library</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view">My Library</a></li>
 				</ul>
 			</nav>	
 		</div>
@@ -30,9 +30,6 @@
 					<th>Title</th>
 					<th>Album</th>
 					<th>Artist</th>
-					<th>InfoUrl</th>
-					<th></th>
-					<th></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -42,8 +39,7 @@
 					<td>${result.songTitle }</td>
 					<td>${result.albumName }</td>
 					<td>${result.artistNameList }</td>
-					<td>${result.aritstInfoUrlList }</td>
-					<td>${result.musicId }</td>
+					<!-- <td>${result.aritstInfoUrlList }</td> -->
 					<td>${result.image }</td>
 					<td><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }">add</button></td>
 				</tr>
