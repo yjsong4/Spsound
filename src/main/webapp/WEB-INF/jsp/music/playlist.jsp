@@ -38,7 +38,7 @@
 				<tr>
 					<td>${playlist.songTitle }</td>
 					<td>${playlist.albumName }</td>
-					<td></td>
+					<td>${playlist.artistNameList }</td>
 					<td><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }">add</button></td>
 				</tr>
 				</c:forEach>
