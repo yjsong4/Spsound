@@ -33,6 +33,7 @@
 					<th>InfoUrl</th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,6 +44,7 @@
 					<td>${result.artistNameList }</td>
 					<td>${result.aritstInfoUrlList }</td>
 					<td>${result.musicId }</td>
+					<td>${result.image }</td>
 					<td><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }">add</button></td>
 				</tr>
 				</c:forEach>

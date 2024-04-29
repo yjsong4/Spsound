@@ -8,17 +8,20 @@ import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.SearchResult;
-import com.syj.spsound.music.repository.MusicRepository;
-import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
-import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
-import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
-import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.specification.Track;
-import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
-import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
+import com.syj.spsound.music.service.MusicService;
+
+import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
+import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
+import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
+import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Paging;
+import se.michaelthelin.spotify.model_objects.specification.Track;
+import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
 
 @Service
 public class SpotifyService {
@@ -28,7 +31,7 @@ public class SpotifyService {
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder().setClientId(CLIENT_ID).setClientSecret(CLIENT_SECRET).build();
 
     @Autowired
-    private MusicRepository musicRepository;
+    private MusicService musicService;
     
     public static String accesstoken() {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
@@ -67,7 +70,15 @@ public class SpotifyService {
 			String songTitle = track.getName();
 			String musicId = track.getId();
 			
+			
 			AlbumSimplified album = track.getAlbum();
+			
+//			Image[] images = album.getImages();
+//			
+//			for(Image image:images) {
+//				image.getUrl();
+//			}
+			
 			ArtistSimplified[] artists = album.getArtists();
 			String albumName = album.getName();
 
@@ -92,8 +103,6 @@ public class SpotifyService {
 			result.setMusicId(musicId);
 			
 			searchResultList.add(result);
-			
-			result.setArtistNameList(artistNameList);
 		}
 		
 		 return searchResultList;
@@ -104,43 +113,43 @@ public class SpotifyService {
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
-						
-		SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(musicId)
+		
+		List<Playlist> musicIdList = musicService.musicId(userId);
+		
+		for(Playlist musicIds:musicIdList) {
+			musicId = musicIds.getMusicId();
+		}
+					
+		GetTrackRequest getTrackRequest = spotifyApi.getTrack(musicId)
                 .build();
 		
-		List<SearchResult> playlist = musicRepository.selectPlaylist(userId);
+		List<SearchResult> playlist = new ArrayList<>();
 		
-		Paging<Track> searchResult = searchTrackRequest.execute();
+		Track track = getTrackRequest.execute();
 		
-		Track[] tracks = searchResult.getItems();
-		
-		for(Track track:tracks) {
-			
-			SearchResult result = new SearchResult();
+		for(SearchResult trackResult:playlist) {
 			
 			String songTitle = track.getName();
+			AlbumSimplified albums = track.getAlbum();
+			String albumName = albums.getName();
 			
-			AlbumSimplified album = track.getAlbum();
-			ArtistSimplified[] artists = album.getArtists();
+			ArtistSimplified[] artists = track.getArtists();		
 			
-			String albumName = album.getName();
-			
-			String artistName = "";
 			ArrayList<String> artistNameList = new ArrayList<>();
+			
 			for(ArtistSimplified artist:artists) {
-				artistName = artist.getName();
-				
+				String artistName = artist.getName();
 				artistNameList.add(artistName);
 			}
 			
-			result.setAlbumName(albumName);
-			result.setArtistNameList(artistNameList);
-			result.setSongTitle(songTitle);
+			trackResult.setSongTitle(songTitle);
+			trackResult.setArtistNameList(artistNameList);
+			trackResult.setAlbumName(albumName);
 			
-			playlist.add(result);
+			playlist.add(trackResult);
 		}
 		
 		return playlist;
 	}
-    
+	
 }

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.domain.Genre;
-import com.syj.spsound.music.dto.SearchResult;
+import com.syj.spsound.music.domain.Playlist;
 
 @Mapper
 public interface MusicRepository {
@@ -32,5 +32,5 @@ public interface MusicRepository {
 	
 	public int insertPlaylist(@Param("userId") int userId, @Param("musicId") String musicId);
 	
-	public List<SearchResult> selectPlaylist(@Param("userId") int userId);
+	public List<Playlist> selectMusicId(@Param("userId") int userId);
 }

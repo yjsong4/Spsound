@@ -15,9 +15,9 @@ import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/spsound")
 @Controller
@@ -63,6 +63,7 @@ public class MusicController {
 		return "music/main";
 	}
 	
+	
 	@GetMapping("/tracklist-view")
 	public String tracklist(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
@@ -74,7 +75,7 @@ public class MusicController {
 	}
 	
 	@GetMapping("/playlist-view")
-	public String playlist(@RequestParam("musicId") String musicId, Model model, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+	public List<SearchResult> playlist(@RequestParam("musicId") String musicId, Model model, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
 		
 		int userId = (Integer)session.getAttribute("userId");
 
@@ -82,6 +83,7 @@ public class MusicController {
 		
 		model.addAttribute("playlist", playlist);
 		
-		return "music/playlist";
+		return playlist;
 	}
+	
 }

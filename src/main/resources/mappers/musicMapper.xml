@@ -134,8 +134,8 @@
 		)
 	</insert>
 		
-	<select id="selectPlaylist"
-	parameterType="int" resultType="com.syj.spsound.music.dto.SearchResult">
+	<select id="selectMusicId"
+	parameterType="int" resultType="com.syj.spsound.music.domain.Playlist">
 		SELECT
 			`id`
 			, `userId`

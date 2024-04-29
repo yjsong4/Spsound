@@ -2,11 +2,14 @@ package com.syj.spsound.music.dto;
 
 import java.util.List;
 
+import se.michaelthelin.spotify.model_objects.specification.Image;
+
 public class SearchResult {
 	
 	private String songTitle;
 	private String albumName;
 	private String musicId;
+	private Image[] image;
 	private List<String> artistNameList;
 	private List<String> aritstInfoUrlList;
 	
@@ -40,5 +43,11 @@ public class SearchResult {
 	public void setAritstInfoUrlList(List<String> aritstInfoUrlList) {
 		this.aritstInfoUrlList = aritstInfoUrlList;
 	}
-	
+	public Image[] getImage() {
+		return image;
+	}
+	public void setImage(Image[] image) {
+		this.image = image;
+	}
+
 }

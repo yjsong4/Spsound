@@ -17,9 +17,9 @@
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
-					<li class="nav-item name"><a class="nav-link" href="http://localhost:8080/spsound/main-view">Main</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
-					<li class="nav-item name"><a class="nav-link" href="#">My Library</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view">My Library</a></li>
 				</ul>
 			</nav>	
 		</div>

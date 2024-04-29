@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.domain.Genre;
+import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.repository.MusicRepository;
 
@@ -144,6 +145,11 @@ public class MusicService {
 	public int addPlaylist(int userId, String musicId) {
 		
 		return musicRepository.insertPlaylist(userId, musicId);
+	}
+	
+	public List<Playlist> musicId(int userId) {
+		
+		return musicRepository.selectMusicId(userId);
 	}
 	
 }

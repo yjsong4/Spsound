@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/music")
 @RestController
@@ -114,12 +114,6 @@ public class MusicRestController {
 		return resultMap;		
 	}
 	
-//	@GetMapping("/spotify/token")
-//	public String token() {
-//		
-//		return SpotifyService.accesstoken();	
-//	}
-	
 	@GetMapping("/spotify/search")
 	public List<SearchResult> search(@RequestParam("keyword") String keyword) throws ParseException, SpotifyWebApiException, IOException {
 
@@ -166,13 +160,5 @@ public class MusicRestController {
 		
 		return resultMap;
 	}
-	
-//	@GetMapping("/mylist")
-//	public List<SearchResult> playlist(@RequestParam("musicId") String musicId, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
-//		
-//		int userId = (Integer)session.getAttribute("userId");
-//		
-//		return spotifyService.getPlaylist(userId, musicId);
-//	}
-	
+
 }
