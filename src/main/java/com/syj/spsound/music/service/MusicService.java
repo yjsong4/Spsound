@@ -147,9 +147,21 @@ public class MusicService {
 		return musicRepository.insertPlaylist(userId, musicId);
 	}
 	
-	public List<Playlist> musicId(int userId) {
+	// 유저가 추가한 노래의 뮤직아이디 갖고옴
+	public List<String> musicIdList(int userId) {
 		
-		return musicRepository.selectMusicId(userId);
+		List<Playlist> playlist =  musicRepository.selectMusicId(userId);
+		
+		List<String> musicIdList = new ArrayList<>(); 
+		
+		for(int i = 0; i < playlist.size(); i++) {
+			
+			String musicId = playlist.get(i).getMusicId();
+			
+			musicIdList.add(musicId);
+		}
+		
+		return musicIdList;
 	}
 	
 }

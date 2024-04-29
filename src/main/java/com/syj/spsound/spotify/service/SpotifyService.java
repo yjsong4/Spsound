@@ -8,20 +8,18 @@ import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
-
-import se.michaelthelin.spotify.SpotifyApi;
-import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
-import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
-import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
-import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
-import se.michaelthelin.spotify.model_objects.specification.Paging;
-import se.michaelthelin.spotify.model_objects.specification.Track;
-import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
-import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
-import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
+import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.Track;
+import com.wrapper.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
+import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
 
 @Service
 public class SpotifyService {
@@ -108,45 +106,46 @@ public class SpotifyService {
 		 return searchResultList;
 	}
 	
-	public List<SearchResult> getPlaylist(int userId, String musicId) throws ParseException, SpotifyWebApiException, IOException {
+	public List<SearchResult> getPlaylist(int userId) throws ParseException, SpotifyWebApiException, IOException {
 		
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
-		
-		List<Playlist> musicIdList = musicService.musicId(userId);
-		
-		for(Playlist musicIds:musicIdList) {
-			musicId = musicIds.getMusicId();
-		}
-					
-		GetTrackRequest getTrackRequest = spotifyApi.getTrack(musicId)
-                .build();
-		
+
+		List<String> musicIdList = musicService.musicIdList(userId);
+
 		List<SearchResult> playlist = new ArrayList<>();
-		
-		Track track = getTrackRequest.execute();
-		
-		for(SearchResult trackResult:playlist) {
+
+		for(int i = 0; i < musicIdList.size(); i++) {
+
+			GetTrackRequest getTrackRequest = spotifyApi.getTrack(musicIdList.get(i))
+					.build();
 			
-			String songTitle = track.getName();
-			AlbumSimplified albums = track.getAlbum();
-			String albumName = albums.getName();
+			Track track = getTrackRequest.execute();
 			
-			ArtistSimplified[] artists = track.getArtists();		
-			
-			ArrayList<String> artistNameList = new ArrayList<>();
-			
-			for(ArtistSimplified artist:artists) {
-				String artistName = artist.getName();
-				artistNameList.add(artistName);
+			for(SearchResult trackResult:playlist) {
+				
+				String songTitle = track.getName();
+				
+				AlbumSimplified albums = track.getAlbum();
+				String albumName = albums.getName();
+				
+				ArtistSimplified[] artists = track.getArtists();		
+				
+				ArrayList<String> artistNameList = new ArrayList<>();
+				
+				for(ArtistSimplified artist:artists) {
+					String artistName = artist.getName();
+					artistNameList.add(artistName);
+				}
+				
+				trackResult.setSongTitle(songTitle);
+				trackResult.setArtistNameList(artistNameList);
+				trackResult.setAlbumName(albumName);
+				
+				playlist.add(trackResult);
 			}
 			
-			trackResult.setSongTitle(songTitle);
-			trackResult.setArtistNameList(artistNameList);
-			trackResult.setAlbumName(albumName);
-			
-			playlist.add(trackResult);
 		}
 		
 		return playlist;
