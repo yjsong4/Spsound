@@ -21,7 +21,7 @@ import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
-import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
+import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
 
 @Service
 public class SpotifyService {
@@ -114,16 +114,19 @@ public class SpotifyService {
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
 
-		List<String> musicIdList = musicService.musicIdList(userId);
-
 		List<SearchResult> playlist = new ArrayList<>();
 		
-		for(int i = 0; i < musicIdList.size(); i++) {
-			
-			GetTrackRequest getTrackRequest = spotifyApi.getTrack(musicIdList.get(i))
-					.build();
-			
-			Track track = getTrackRequest.execute();
+		List<String> musicIdList = musicService.musicIdList(userId);
+		
+		String[] arr = new String[musicIdList.size()];
+		musicIdList.toArray(arr);
+		
+		GetSeveralTracksRequest getTrackRequest = spotifyApi.getSeveralTracks(arr)
+				.build();
+		
+		Track[] tracks = getTrackRequest.execute();
+		
+		for(Track track:tracks) {
 			
 			SearchResult trackResult = new SearchResult();
 			
@@ -147,14 +150,14 @@ public class SpotifyService {
 				artistNameList.add(artistName);
 			}
 			
-			trackResult.setMusicId(musicIdList.get(i));
+			trackResult.setMusicId(track.getId());
 			trackResult.setSongTitle(songTitle);
 			trackResult.setArtistNameList(artistNameList);
 			trackResult.setAlbumName(albumName);
 			
 			playlist.add(trackResult);
 		}
-		
+	
 		return playlist;
 	}
 		

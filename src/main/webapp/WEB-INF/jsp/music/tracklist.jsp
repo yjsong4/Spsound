@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>검색결과 트랙리스트</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -18,7 +19,7 @@
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
-					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view">My Library</a></li>
 				</ul>
 			</nav>	
@@ -31,17 +32,18 @@
 					<th>Title</th>
 					<th>Album</th>
 					<th>Artist</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="result" items="${searchResultList }">
-				<tr>
+				<tr >
 					<td><img src="${result.image }"></td>
-					<td>${result.songTitle }</td>
-					<td>${result.albumName }</td>
-					<td>${result.artistNameList }</td>
+					<td class="pt-4">${result.songTitle }</td>
+					<td class="pt-4">${result.albumName }</td>
+					<td class="pt-4">${result.artistNameList }</td>
 					<!-- <td>${result.aritstInfoUrlList }</td> -->
-					<td><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }">add</button></td>
+					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }"><i class="bi bi-plus-lg"></i></button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
