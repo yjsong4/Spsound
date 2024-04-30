@@ -156,4 +156,18 @@
 		AND `musicId` = #{musicId}
 	</delete>
 	
+	<select id="selectUserIdByGenre"
+	parameterType="String" resultType="com.syj.spsound.music.domain.Genre">
+		SELECT
+			`id`
+			, `userId`
+			, `genre`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`genre`
+		WHERE
+			`genre` = #{genre}
+	</select>
+	
 </mapper>

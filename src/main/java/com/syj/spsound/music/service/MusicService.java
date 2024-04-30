@@ -168,5 +168,10 @@ public class MusicService {
 		
 		return musicRepository.deletePlaylist(userId, musicId);
 	}
+	
+//	public getUserByGenre(String Genre) {
+//		
+//		musicRepository.selectUserIdByGenre(Genre);
+//	}
 		
 }

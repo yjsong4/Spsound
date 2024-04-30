@@ -24,6 +24,12 @@
 			</nav>	
 		</div>
 
+		<div class="music-box d-flex text-center">
+			<div class="playlist">playlist1</div>
+			<div class="playlist">playlist2</div>
+			<div class="playlist">playlist3</div>
+		</div>
+
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
