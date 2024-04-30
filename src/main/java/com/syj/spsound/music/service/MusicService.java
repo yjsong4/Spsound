@@ -163,5 +163,10 @@ public class MusicService {
 		
 		return musicIdList;
 	}
+	
+	public int deletePlaylist(int userId, String musicId) {
+		
+		return musicRepository.deletePlaylist(userId, musicId);
+	}
 		
 }

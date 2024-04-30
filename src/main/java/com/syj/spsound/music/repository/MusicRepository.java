@@ -33,5 +33,7 @@ public interface MusicRepository {
 	public int insertPlaylist(@Param("userId") int userId, @Param("musicId") String musicId);
 	
 	public List<Playlist> selectMusicId(@Param("userId") int userId);
+	
+	public int deletePlaylist(@Param("userId") int userId, @Param("musicId") String musicId);
 
 }

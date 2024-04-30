@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/music")
 @RestController
@@ -117,7 +117,6 @@ public class MusicRestController {
 	@GetMapping("/spotify/search")
 	public List<SearchResult> search(@RequestParam("keyword") String keyword) throws ParseException, SpotifyWebApiException, IOException {
 
-		
 		return spotifyService.searchByKeyword(keyword);
 	}
 	
@@ -168,5 +167,25 @@ public class MusicRestController {
 //		
 //		return spotifyService.getPlaylist(userId);
 //	}
+	
+	@DeleteMapping("/delete/playlist")
+	public Map<String, String> deletePlaytist(
+			@RequestParam("musicId") String musicId
+			, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = musicService.deletePlaylist(userId, musicId);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;		
+	}
 	
 }

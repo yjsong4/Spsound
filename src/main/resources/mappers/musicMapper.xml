@@ -148,4 +148,12 @@
 			`userId` = #{userId}
 	</select>
 	
+	<delete id="deletePlaylist" parameterType="map">
+		DELETE FROM
+			`playlist`
+		WHERE
+			`userId` = #{userId}
+		AND `musicId` = #{musicId}
+	</delete>
+	
 </mapper>
