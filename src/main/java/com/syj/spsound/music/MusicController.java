@@ -85,5 +85,11 @@ public class MusicController {
 		
 		return "music/playlist";
 	}
+	
+	@GetMapping("/discover-view")
+	public String discover() {
+		
+		return "music/discover";
+	}
 
 }

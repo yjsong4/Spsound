@@ -16,6 +16,7 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
+import se.michaelthelin.spotify.model_objects.specification.Image;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
@@ -69,14 +70,14 @@ public class SpotifyService {
 			String songTitle = track.getName();
 			String musicId = track.getId();
 			
-			
 			AlbumSimplified album = track.getAlbum();
 			
-//			Image[] images = album.getImages();
-//			
-//			for(Image image:images) {
-//				image.getUrl();
-//			}
+			Image[] images = album.getImages();
+			
+			for(Image image:images) {
+				String imageUrl = image.getUrl();
+				result.setImage(imageUrl);
+			}
 			
 			ArtistSimplified[] artists = album.getArtists();
 			String albumName = album.getName();
@@ -130,6 +131,12 @@ public class SpotifyService {
 			
 			AlbumSimplified albums = track.getAlbum();
 			String albumName = albums.getName();
+			Image[] images = albums.getImages();
+			
+			for(Image image:images) {
+				String imageUrl = image.getUrl();
+				trackResult.setImage(imageUrl);
+			}
 			
 			ArtistSimplified[] artists = track.getArtists();		
 			

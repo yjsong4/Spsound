@@ -27,18 +27,20 @@
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Title</th>
 					<th>Album</th>
 					<th>Artist</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="playlist" items="${playlist }">
 				<tr>
+					<td><img src="${playlist.image }"></td>
 					<td>${playlist.songTitle }</td>
 					<td>${playlist.albumName }</td>
 					<td>${playlist.artistNameList }</td>
+					
 					<td><button type="button" class="btn btn-block delete-btn" data-music-id="${playlist.musicId }">remove</button></td>
 				</tr>
 				</c:forEach>
@@ -66,6 +68,7 @@
 					
 					if(data.result == "success") {
 						alert("플레이리스트에서 삭제 되었습니다.");
+						location.reload();
 					} else {
 						alert("삭제 실패");
 					}
