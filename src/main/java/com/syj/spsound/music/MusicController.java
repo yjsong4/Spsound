@@ -15,9 +15,9 @@ import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/spsound")
 @Controller
@@ -79,6 +79,7 @@ public class MusicController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
+		// userId 불러오는 방식
 		List<SearchResult> playlist = spotifyService.getPlaylist(userId);
 		
 		model.addAttribute("playlist", playlist);

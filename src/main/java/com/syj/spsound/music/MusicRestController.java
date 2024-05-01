@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/music")
 @RestController
@@ -178,6 +179,12 @@ public class MusicRestController {
 		}
 		
 		return resultMap;		
+	}
+	
+	@GetMapping("/test")
+	public List<Genre> test(@RequestParam("genre") String genre) {
+		
+		return musicService.getUserByGenre(genre);
 	}
 	
 }

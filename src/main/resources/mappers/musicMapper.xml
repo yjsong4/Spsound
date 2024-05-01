@@ -32,6 +32,20 @@
 			`userId` = #{userId}
 	</select>
 	
+	<select id="selectAllGenreList"
+	resultType="com.syj.spsound.music.domain.Genre">
+		SELECT
+			`id`
+			, `userId`
+			, `genre`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`genre`
+		ORDER BY
+			`id` DESC
+	</select>
+	
 	<select id="selectGenre"
 	parameterType="map" resultType="com.syj.spsound.music.domain.Genre">
 		SELECT

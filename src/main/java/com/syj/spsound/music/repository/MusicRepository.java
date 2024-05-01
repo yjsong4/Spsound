@@ -16,6 +16,8 @@ public interface MusicRepository {
 	
 	public List<Genre> selectGenreList(@Param("userId") int userId);
 	
+	public List<Genre> selectAllGenreList();
+
 	public Genre selectGenre(@Param("userId") int userId, @Param("genre") String genre);
 	
 	public int deleteGenre(@Param("userId") int userId, @Param("genre") String genre);

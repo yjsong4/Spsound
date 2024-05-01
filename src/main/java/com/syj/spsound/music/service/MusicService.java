@@ -11,7 +11,6 @@ import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.repository.MusicRepository;
-import com.syj.spsound.user.service.UserService;
 
 @Service
 public class MusicService {
@@ -19,8 +18,8 @@ public class MusicService {
 	@Autowired
 	private MusicRepository musicRepository;
 	
-	@Autowired
-	private UserService userService;
+//	@Autowired
+//	private UserService userService;
 	
 	public int chooseGenre(int userId, String genre) {
 	
@@ -172,10 +171,27 @@ public class MusicService {
 		return musicRepository.deletePlaylist(userId, musicId);
 	}
 	
-//	public List<Genre> getUserByGenre(String genre) {
-//		
-//		List<Genre> userIdList = musicRepository.selectUserIdByGenre(genre);
-//
-//	}
+	public List<Genre> getUserByGenre(String genre) {
+	
+		List<Genre> AllGenreList = musicRepository.selectAllGenreList();
+				
+		List<Genre> testList = new ArrayList<>();
+		
+		for(Genre test:AllGenreList) {
+
+			testList = musicRepository.selectUserIdByGenre(test.getGenre());
+			
+			Genre please = new Genre();
+			
+			please.setGenre(test.getGenre());
+			please.setUserId(test.getUserId());
+
+			testList.add(please);
+		}
+		
+//		int count = 0;
+
+		return testList;
+	}
 		
 }

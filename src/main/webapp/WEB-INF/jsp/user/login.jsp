@@ -21,7 +21,7 @@
 					<input type="password" placeholder="password" class="form-control" id="passwordInput" required>
 					<button type="submit" class="btn btn-block text-white main-btn">LOGIN</button>
 				</form>
-				<div class="text-center small"><a href="/user/join-view">Create account here!</a></div>
+				<div class="text-center small"><a href="/user/join-view">Don't have an account?</a></div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

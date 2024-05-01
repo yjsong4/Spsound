@@ -25,9 +25,9 @@
 		</div>
 
 		<div class="music-box d-flex text-center">
-			<div class="playlist">playlist1</div>
-			<div class="playlist">playlist2</div>
-			<div class="playlist">playlist3</div>
+			<div class="playlist">장르 3개 이상 같은 유저</div>
+			<div class="playlist">아티스트 3개 이상 같은 유저</div>
+			<div class="playlist">키워드 3개 이상 같은 유저</div>
 		</div>
 
 	</div>
