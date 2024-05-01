@@ -11,12 +11,16 @@ import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.repository.MusicRepository;
+import com.syj.spsound.user.service.UserService;
 
 @Service
 public class MusicService {
 	
 	@Autowired
 	private MusicRepository musicRepository;
+	
+	@Autowired
+	private UserService userService;
 	
 	public int chooseGenre(int userId, String genre) {
 	
@@ -147,7 +151,6 @@ public class MusicService {
 		return musicRepository.insertPlaylist(userId, musicId);
 	}
 	
-	// 유저가 추가한 노래의 뮤직아이디 갖고옴
 	public List<String> musicIdList(int userId) {
 		
 		List<Playlist> playlist =  musicRepository.selectMusicId(userId);
@@ -169,9 +172,10 @@ public class MusicService {
 		return musicRepository.deletePlaylist(userId, musicId);
 	}
 	
-//	public getUserByGenre(String Genre) {
+//	public List<Genre> getUserByGenre(String genre) {
 //		
-//		musicRepository.selectUserIdByGenre(Genre);
+//		List<Genre> userIdList = musicRepository.selectUserIdByGenre(genre);
+//
 //	}
 		
 }

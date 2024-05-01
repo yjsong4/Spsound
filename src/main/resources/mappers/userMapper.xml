@@ -42,6 +42,18 @@
 			`email` = #{email}
 	</select>
 	
-	<select id="gerUser"></select>
+	<select id="selectUser"
+	parameterType="int" resultType="com.syj.spsound.user.domain.User">
+		SELECT
+			`id`
+			, `email`
+			, `password`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`user`
+		WHERE
+			`id` = #{id}
+	</select>
 	
 </mapper>

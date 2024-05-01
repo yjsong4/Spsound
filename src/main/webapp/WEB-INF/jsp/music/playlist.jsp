@@ -28,11 +28,11 @@
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
-					<th></th>
+					<th><i class="bi bi-music-player"></i></th>
 					<th>Title</th>
 					<th>Album</th>
 					<th>Artist</th>
-					<th></th>
+					<th><i class="bi bi-music-note-list"></i></th>
 				</tr>
 			</thead>
 			<tbody>
