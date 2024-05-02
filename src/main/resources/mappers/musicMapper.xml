@@ -184,4 +184,23 @@
 			`genre` = #{genre}
 	</select>
 	
+	<select id="countByGenre" parameterType="List" resultType="">
+		SELECT
+			`userId`
+		COUNT (*) AS 
+			`count`
+		FROM 
+			`genre`
+		WHERE 
+			`genre`
+		IN
+			<foreach collection="userGenreList" item="genre" open="(" separator="," close=")">
+				#{genre.genre}
+			</foreach>
+		GROUP BY 
+			`userId`
+		HAVING 
+			`count` >= 3;
+	</select>
+	
 </mapper>

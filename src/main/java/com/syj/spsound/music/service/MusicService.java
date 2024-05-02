@@ -171,35 +171,19 @@ public class MusicService {
 		return musicRepository.deletePlaylist(userId, musicId);
 	}
 	
-	public List<Genre> getUserByGenre(String genre) {
+	public List<Genre> getUserByGenre(int userId) {
+						
+		return musicRepository.countByGenre(musicRepository.selectGenreList(userId));	
 		
-		// 저장된 모든 장르 조회
-		List<Genre> allGenreList = musicRepository.selectAllGenreList();	
-		
-		List<Genre> test = new ArrayList<>();
-		 
-		for(Genre sth:allGenreList) {
-			
-			
-			// 유저 별 장르리스트
-			List<Genre> userGenreList = musicRepository.selectGenreList(sth.getUserId());
-			
-			
-			for(Genre sth1:userGenreList) {
-				
-				Genre g1 = new Genre();
-				if(sth.getGenre().equals(sth1.getGenre())) {
-					
-					g1.setUserId(sth1.getUserId());
-					
-					
-					test.add(g1);
-				}
-			}
-			
-		}
-		
-		return test;
+//		나와 장르가 3개이상 일치하는 사용자 찾기
+//
+//		SELECT `userId`,
+//		Count(*) AS `count` FROM `genre`
+//		WHERE `genre` IN ('Latin', 'Soul', 'Rock') GROUP BY `userId` HAVING `count` >= 2;
+//
+//		반복문으로
+//		장르 부분에 유저별 선택한 장르리스트 불러와야
+
 	}
 		
 }

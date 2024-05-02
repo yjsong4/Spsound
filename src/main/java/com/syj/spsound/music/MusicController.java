@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/spsound")
 @Controller
@@ -91,6 +92,19 @@ public class MusicController {
 	public String discover() {
 		
 		return "music/discover";
+	}
+	
+	public String userGenreList(
+			Model model
+			, HttpSession session) {
+		
+		int userId = (Integer)session.getAttribute("userId");
+
+		List<Genre> userGenreList = musicService.getUserByGenre(userId);
+		
+		model.addAttribute("userGenreList", userGenreList);
+		
+		return "";
 	}
 
 }
