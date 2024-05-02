@@ -172,26 +172,34 @@ public class MusicService {
 	}
 	
 	public List<Genre> getUserByGenre(String genre) {
-	
-		List<Genre> AllGenreList = musicRepository.selectAllGenreList();
-				
-		List<Genre> testList = new ArrayList<>();
 		
-		for(Genre test:AllGenreList) {
-
-			testList = musicRepository.selectUserIdByGenre(test.getGenre());
+		// 저장된 모든 장르 조회
+		List<Genre> allGenreList = musicRepository.selectAllGenreList();	
+		
+		List<Genre> test = new ArrayList<>();
+		 
+		for(Genre sth:allGenreList) {
 			
-			Genre please = new Genre();
 			
-			please.setGenre(test.getGenre());
-			please.setUserId(test.getUserId());
-
-			testList.add(please);
+			// 유저 별 장르리스트
+			List<Genre> userGenreList = musicRepository.selectGenreList(sth.getUserId());
+			
+			
+			for(Genre sth1:userGenreList) {
+				
+				Genre g1 = new Genre();
+				if(sth.getGenre().equals(sth1.getGenre())) {
+					
+					g1.setUserId(sth1.getUserId());
+					
+					
+					test.add(g1);
+				}
+			}
+			
 		}
 		
-//		int count = 0;
-
-		return testList;
+		return test;
 	}
 		
 }

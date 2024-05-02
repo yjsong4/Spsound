@@ -38,5 +38,5 @@ public interface MusicRepository {
 	
 	public int deletePlaylist(@Param("userId") int userId, @Param("musicId") String musicId);
 
-	public List<Genre> selectUserIdByGenre(@Param("genre") String genre);
+	public List<Genre> selectUserByGenre(@Param("genre") String genre);
 }

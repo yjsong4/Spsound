@@ -170,7 +170,7 @@
 		AND `musicId` = #{musicId}
 	</delete>
 	
-	<select id="selectUserIdByGenre"
+	<select id="selectUserByGenre"
 	parameterType="String" resultType="com.syj.spsound.music.domain.Genre">
 		SELECT
 			`id`
