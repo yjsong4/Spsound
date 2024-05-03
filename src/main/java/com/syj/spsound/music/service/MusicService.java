@@ -12,17 +12,12 @@ import com.syj.spsound.music.domain.Playlist;
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.Count;
 import com.syj.spsound.music.repository.MusicRepository;
-import com.syj.spsound.user.domain.User;
-import com.syj.spsound.user.service.UserService;
 
 @Service
 public class MusicService {
 	
 	@Autowired
 	private MusicRepository musicRepository;
-	
-	@Autowired
-	private UserService userService;
 	
 	public int chooseGenre(int userId, String genre) {
 	
@@ -176,23 +171,7 @@ public class MusicService {
 	
 	public List<Count> getUserByGenre(int userId) {
 		
-		
 		return musicRepository.countByGenre(musicRepository.selectGenreList(userId));	
-		
-	
-		
-		
-		
-		
-		
-//		나와 장르가 3개이상 일치하는 사용자 찾기
-//
-//		SELECT `userId`,
-//		Count(*) AS `count` FROM `genre`
-//		WHERE `genre` IN ('Latin', 'Soul', 'Rock' : 각 유저별로 선택한 장르 리스트) GROUP BY `userId` HAVING `count` >= 3;
-//
-//		반복문으로
-//		장르 부분에 유저별 선택한 장르리스트 불러와야
 	}
-		
+			
 }

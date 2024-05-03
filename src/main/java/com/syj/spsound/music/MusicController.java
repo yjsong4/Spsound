@@ -1,6 +1,7 @@
 package com.syj.spsound.music;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.syj.spsound.music.dto.Choice;
+import com.syj.spsound.music.dto.Count;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
+import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/spsound")
 @Controller
@@ -86,11 +88,35 @@ public class MusicController {
 		
 		return "music/playlist";
 	}
-	
+
 	@GetMapping("/discover-view")
 	public String discover() {
 		
 		return "music/discover";
+	}
+	
+	@GetMapping("/othersPlaylist-view")
+	public String othersPlaylist(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);
+		
+		int id = 0;
+		List<SearchResult> othersPlaylist = new ArrayList<>();
+		
+		for(Count ids:userIdAndCountList) {
+			id = ids.getUserId();
+			
+			if(id != userId) {
+				
+				spotifyService.getPlaylist(id);
+			}
+		}
+		
+		model.addAttribute("othersPlaylist", othersPlaylist);
+		
+		return "music/othersPlaylist";
 	}
 
 }

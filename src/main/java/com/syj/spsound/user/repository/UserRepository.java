@@ -19,4 +19,6 @@ public interface UserRepository {
 	public int selectCountByEmail(@Param("email") String email);
 
 	public User selectUser(@Param("id") int id);
+	
+//	public List<User> userId();
 }

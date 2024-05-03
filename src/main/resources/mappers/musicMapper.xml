@@ -187,8 +187,7 @@
 	<select id="countByGenre" parameterType="java.util.List" resultType="com.syj.spsound.music.dto.Count">
 		SELECT
 			`userId`
-		COUNT (*) AS 
-			`count`
+			, COUNT(*) AS `count`
 		FROM 
 			`genre`
 		WHERE 
@@ -200,7 +199,7 @@
 		GROUP BY 
 			`userId`
 		HAVING 
-			`count` >= 2
+			`count` >= 3
 	</select>
 	
 </mapper>
