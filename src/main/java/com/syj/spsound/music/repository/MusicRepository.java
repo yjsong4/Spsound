@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.domain.Genre;
 import com.syj.spsound.music.domain.Playlist;
+import com.syj.spsound.music.dto.Count;
 
 @Mapper
 public interface MusicRepository {
@@ -40,5 +41,5 @@ public interface MusicRepository {
 
 	public List<Genre> selectUserByGenre(@Param("genre") String genre);
 	
-	public List<Genre> countByGenre(@Param("userGenreList") List<Genre> userGenreList);
+	public List<Count> countByGenre(@Param("userGenreList") List<Genre> userGenreList);
 }

@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.syj.spsound.music.domain.Genre;
+import com.syj.spsound.music.dto.Count;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 
 import jakarta.servlet.http.HttpSession;
-import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
 @RequestMapping("/music")
 @RestController
@@ -182,9 +183,11 @@ public class MusicRestController {
 	}
 	
 	@GetMapping("/test")
-	public List<Genre> test(@RequestParam("userId") int userId) {
+	public List<Count> test(@RequestParam("userId") int userId) {
 		
-		return musicService.getUserByGenre(userId);
+		List<Count> userGenreList = musicService.getUserByGenre(userId);
+	
+		return userGenreList;
 	}
 	
 }

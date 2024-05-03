@@ -184,7 +184,7 @@
 			`genre` = #{genre}
 	</select>
 	
-	<select id="countByGenre" parameterType="List" resultType="">
+	<select id="countByGenre" parameterType="java.util.List" resultType="com.syj.spsound.music.dto.Count">
 		SELECT
 			`userId`
 		COUNT (*) AS 
@@ -194,13 +194,13 @@
 		WHERE 
 			`genre`
 		IN
-			<foreach collection="userGenreList" item="genre" open="(" separator="," close=")">
-				#{genre.genre}
+			<foreach collection="userGenreList" item="userGenreList" open="(" separator="," close=")">
+				#{userGenreList.genre}
 			</foreach>
 		GROUP BY 
 			`userId`
 		HAVING 
-			`count` >= 3;
+			`count` >= 2
 	</select>
 	
 </mapper>
