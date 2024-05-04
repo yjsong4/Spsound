@@ -18,10 +18,10 @@
 				<c:choose>
 					<c:when test="${artist.checked eq true }">
 						<div class="circle text-white" id="floating${status.count }">${artist.name }</div>
-						<c:set var="genreCount" value="${genreCount + 1 }" />
+						<c:set var="artistCount" value="${artistCount + 1 }" />
 					</c:when>
 					<c:otherwise>
-						<div class="circle" id="floating${status.count }">${artist.name }</div>
+						<div class="circle" id="floating${status.count }" data-artist-id="${artist.artistId }">${artist.name }</div>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -34,7 +34,7 @@
 		
 			<div>
 				<c:choose>
-					<c:when test="${genreCount >= 3 }">
+					<c:when test="${artistCount >= 3 }">
 						<i class="bi bi-chevron-right right-btn" onclick="location.href='/spsound/main-view'"></i>
 					</c:when>
 					<c:otherwise>
@@ -60,6 +60,7 @@
 		$(".circle").on("click", function() {
 			
 			let artist = $(this).text();
+			let artistId = $(this).data("artist-id");
 			let check = $(this).data("checked");
 			
 			if(check == true) {
@@ -90,7 +91,7 @@
 				$.ajax({
 					type:"post"
 					, url:"/music/select/artist"
-					, data:{"artist":artist}
+					, data:{"artist":artist, "artistId":artistId}
 					, success:function(data) {
 						
 						if(data.result == "success") {

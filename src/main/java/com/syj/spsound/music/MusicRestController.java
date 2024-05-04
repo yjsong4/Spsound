@@ -79,11 +79,12 @@ public class MusicRestController {
 	@PostMapping("/select/artist")
 	public Map<String, String> chooseArtist(
 			@RequestParam("artist") String artist
+			, @RequestParam("artistId") String artistId
 			, HttpSession session) {
 		
 		int userId = (Integer) session.getAttribute("userId");
 		
-		int count = musicService.chooseArtist(userId, artist);
+		int count = musicService.chooseArtist(userId, artist, artistId);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		

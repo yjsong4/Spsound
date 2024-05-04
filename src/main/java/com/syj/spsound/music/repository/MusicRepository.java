@@ -23,7 +23,7 @@ public interface MusicRepository {
 	
 	public int deleteGenre(@Param("userId") int userId, @Param("genre") String genre);
 
-	public int insertArtist(@Param("userId") int userId, @Param("artist") String artist);
+	public int insertArtist(@Param("userId") int userId, @Param("artist") String artist, @Param("artistId") String artistId);
 	
 	public List<Artist> selectArtistList(@Param("userId") int userId);
 	

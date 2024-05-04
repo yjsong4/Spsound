@@ -75,11 +75,13 @@
 		(
 			`userId`
 			, `artist`
+			, `artistId`
 		)
 		VALUE
 		(
 			#{userId}
 			, #{artist}
+			, #{artistId}
 		)
 	</insert>
 	

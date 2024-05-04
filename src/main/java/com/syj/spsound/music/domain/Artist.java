@@ -7,6 +7,7 @@ public class Artist {
 	private int id;
 	private int userId;
 	private String artist;
+	private String artistId;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -27,6 +28,12 @@ public class Artist {
 	}
 	public void setArtist(String artist) {
 		this.artist = artist;
+	}
+	public String getArtistId() {
+		return artistId;
+	}
+	public void setArtistId(String artistId) {
+		this.artistId = artistId;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

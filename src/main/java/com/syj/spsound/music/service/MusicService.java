@@ -79,9 +79,9 @@ public class MusicService {
 		return musicRepository.deleteGenre(userId, genre);
 	}
 	
-	public int chooseArtist(int userId, String artist) {
+	public int chooseArtist(int userId, String artist, String artistId) {
 		
-		return musicRepository.insertArtist(userId, artist);
+		return musicRepository.insertArtist(userId, artist, artistId);
 	}
 	
 	public List<Choice> getArtistList(int userId) {
@@ -90,33 +90,52 @@ public class MusicService {
 		
 		Choice choice = new Choice();
 		choice.setName("Taylor Swift");
+		choice.setArtistId("06HL4z0CvFAxyc27GXpf02");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Tame Impala");
+		choice.setArtistId("5INjqkS1o8h1imAzPqGZBb");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Ariana Grande");
+		choice.setArtistId("66CXWjxzNUsdJxJ2JdwvnR");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Billie Eilish");
+		choice.setArtistId("6qqNVTkY8uBg9cP3Jd7DAH");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Harry Styles");
+		choice.setArtistId("6KImCVD70vtIoJWnq6nGn3");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Beyonce");
+		choice.setArtistId("6vWDO969PvNqNYHIOW5v0m");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("SZA");
+		choice.setArtistId("7tYKF4w9nC0nq9CsPZTHyP");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Drake");
+		choice.setArtistId("3TVXtAsR1Inumwj472S9r4");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Justin Bieber");
+		choice.setArtistId("1uNFoZAHBGtllmzznpCI3s");
 		choiceList.add(choice);
+		
 		choice = new Choice();
 		choice.setName("Bad Bunny");
+		choice.setArtistId("4q3ewBCX7sLwd24euuV69X");
 		choiceList.add(choice);
 		
 		List<Artist> myArtist = musicRepository.selectArtistList(userId);

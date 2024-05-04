@@ -3,6 +3,7 @@ package com.syj.spsound.music.dto;
 public class Choice {
 	
 	private String name;
+	private String artistId;
 	private boolean checked;
 	
 	public String getName() {
@@ -10,6 +11,12 @@ public class Choice {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getArtistId() {
+		return artistId;
+	}
+	public void setArtistId(String artistId) {
+		this.artistId = artistId;
 	}
 	public boolean isChecked() {
 		return checked;
