@@ -32,9 +32,7 @@ public class MusicController {
 	private SpotifyService spotifyService;
 	
 	@GetMapping("/select-genre-view")
-	public String genre(
-			Model model
-			, HttpSession session) {
+	public String genre(HttpSession session, Model model) {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
@@ -46,9 +44,7 @@ public class MusicController {
 	}
 	
 	@GetMapping("/select-artist-view")
-	public String artist(
-			Model model
-			, HttpSession session) {
+	public String artist(HttpSession session, Model model) {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
@@ -77,7 +73,7 @@ public class MusicController {
 	}
 	
 	@GetMapping("/playlist-view")
-	public String playlist(Model model, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+	public String playlist(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
@@ -95,7 +91,7 @@ public class MusicController {
 	}
 	
 	@GetMapping("/othersPlaylists-view")
-	public String userIdTest(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
+	public String othersPlaylists(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		int ids = 0;
@@ -116,5 +112,17 @@ public class MusicController {
 		model.addAttribute("userIdListExceptMe", userIdListExceptMe);
 		
 		return "music/othersPlaylists";
+	}
+	
+	@GetMapping("/artistTopTrack-view")
+	public String artistTopTrack(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
+		
+		int userId = (Integer)session.getAttribute("userId");
+
+		List<SearchResult> artistTopTrackList = spotifyService.getArtistTopTrack(userId);
+		
+		model.addAttribute("artistTopTrackList", artistTopTrackList);
+		
+		return "music/artistTopTrack";
 	}
 }

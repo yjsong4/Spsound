@@ -91,6 +91,7 @@
 			`id`
 			, `userId`
 			, `artist`
+			, `artistId`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -105,6 +106,7 @@
 			`id`
 			, `userId`
 			, `artist`
+			, `artistId`
 			, `createdAt`
 			, `updatedAt`
 		FROM

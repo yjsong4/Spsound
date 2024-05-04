@@ -8,7 +8,10 @@ import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neovisionaries.i18n.CountryCode;
+import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.dto.SearchResult;
+import com.syj.spsound.music.repository.MusicRepository;
 import com.syj.spsound.music.service.MusicService;
 
 import se.michaelthelin.spotify.SpotifyApi;
@@ -20,6 +23,7 @@ import se.michaelthelin.spotify.model_objects.specification.Image;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import se.michaelthelin.spotify.requests.data.artists.GetArtistsTopTracksRequest;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
 
@@ -32,6 +36,9 @@ public class SpotifyService {
 
     @Autowired
     private MusicService musicService;
+    
+    @Autowired
+    private MusicRepository musicRepository;
     
 //	@Autowired
 //	private UserService userService;
@@ -163,21 +170,54 @@ public class SpotifyService {
 	
 		return playlist;
 	}
+		
+	public List<SearchResult> getArtistTopTrack(int userId) throws ParseException, SpotifyWebApiException, IOException {
+		
+		SpotifyApi spotifyApi = new SpotifyApi.Builder()
+	            .setAccessToken(SpotifyService.accesstoken())
+	            .build();
 	
-	
-	
-	
-//	public getArtistTopTrack(int userId) {
-//		
-//		SpotifyApi spotifyApi = new SpotifyApi.Builder()
-//	            .setAccessToken(SpotifyService.accesstoken())
-//	            .build();
-//	
-//		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
-//		for(Artist artist;userArtistList) {
-//			String artistName = artist.getArtist();
-//		}
-//	
-//	}
-//		
+		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
+		List<SearchResult> artistTopTrackList = new ArrayList<>();
+
+		String artistId ="";
+		for(Artist artist:userArtistList) {
+			
+			artistId = artist.getArtistId();
+			GetArtistsTopTracksRequest getArtistsTopTracksRequest = spotifyApi.getArtistsTopTracks(artistId, CountryCode.US)
+					.build();
+			
+			Track[] tracks = getArtistsTopTracksRequest.execute();
+			
+			for(Track track:tracks) {
+				
+				SearchResult trackResult = new SearchResult();
+				
+				String songTitle = track.getName();
+				String albumName = track.getAlbum().getName();
+				
+				Image[] images = track.getAlbum().getImages();
+				for(Image image:images) {
+					String imageUrl = image.getUrl();
+					trackResult.setImage(imageUrl);
+				}
+				
+				ArtistSimplified[] artists = track.getArtists();
+				ArrayList<String> artistNameList = new ArrayList<>();
+				for(ArtistSimplified artist1:artists) {
+					String artistName = artist1.getName();
+					artistNameList.add(artistName);
+				}
+				
+				trackResult.setAlbumName(albumName);
+				trackResult.setArtistNameList(artistNameList);
+				trackResult.setSongTitle(songTitle);
+				
+				artistTopTrackList.add(trackResult);
+			}
+		}
+		
+		return artistTopTrackList;
+	}
+		
 }
