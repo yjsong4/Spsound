@@ -1,6 +1,7 @@
 package com.syj.spsound.music;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -181,17 +182,32 @@ public class MusicRestController {
 		return resultMap;		
 	}
 	
-	@GetMapping("/test")
-	public List<Count> test(@RequestParam("userId") int userId) {
+	@GetMapping("/test1")
+	public List<List<SearchResult>> userIdTest(HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
 		
-		List<Count> userGenreList = musicService.getUserByGenre(userId);
-	
-		return userGenreList;
+		int userId = (Integer)session.getAttribute("userId");
+		int ids = 0;
+		
+		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);		
+		List<Count> userIdListExceptMe = new ArrayList<>();
+		List<List<SearchResult>> othersPlaylists = new ArrayList<>();
+		
+		for(Count users:userIdAndCountList) {
+			
+			ids = users.getUserId();
+			
+			if(userId != ids) {
+				users.setUserId(ids);
+				userIdListExceptMe.add(users);
+			}
+		}
+		
+		for(int i = 0; i < userIdListExceptMe.size(); i++) {
+			
+			List<SearchResult> add = spotifyService.getPlaylist(userIdListExceptMe.get(i).getUserId());
+			othersPlaylists.add(add);
+		}
+		
+		return othersPlaylists;
 	}
-	
-//	@GetMapping("/test1")
-//	public List<SearchResult> test1(@RequestParam("userId") int userId) throws ParseException, SpotifyWebApiException, IOException {
-//		
-//		return spotifyService.othersPlaylist(userId);	
-//	}
 }
