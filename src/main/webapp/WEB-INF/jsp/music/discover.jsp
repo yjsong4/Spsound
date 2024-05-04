@@ -25,9 +25,15 @@
 		</div>
 
 		<div class="music-box d-flex text-center">
-			<div class="playlist">장르 3개 이상 같은 유저</div>
-			<div class="playlist">아티스트 3개 이상 같은 유저</div>
-			<div class="playlist">키워드 3개 이상 같은 유저</div>
+			
+				<div class="playlist">
+					<div class="song">플레이리스트 1</div>
+					<div class="song">플레이리스트 2</div>
+					<div>...</div>
+				</div>
+				<div class="playlist">아티스트 3개 이상 같은 유저</div>
+				<div class="playlist">키워드 3개 이상 같은 유저</div>
+			
 		</div>
 
 	</div>
@@ -35,5 +41,20 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		
+		$(".song").on("click", function() {
+						
+			alert("");
+			
+		});
+		
+		
+	});
+
+
+
+</script>
 </body>
 </html>

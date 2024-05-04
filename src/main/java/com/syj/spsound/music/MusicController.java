@@ -81,7 +81,6 @@ public class MusicController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		// userId 불러오는 방식
 		List<SearchResult> playlist = spotifyService.getPlaylist(userId);
 		
 		model.addAttribute("playlist", playlist);
@@ -95,28 +94,27 @@ public class MusicController {
 		return "music/discover";
 	}
 	
-	@GetMapping("/othersPlaylist-view")
-	public String othersPlaylist(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
+	@GetMapping("/othersPlaylists-view")
+	public String userIdTest(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
 		int userId = (Integer)session.getAttribute("userId");
+		int ids = 0;
 		
-		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);
+		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);		
+		List<Count> userIdListExceptMe = new ArrayList<>();
 		
-		int id = 0;
-		List<SearchResult> othersPlaylist = new ArrayList<>();
-		
-		for(Count ids:userIdAndCountList) {
-			id = ids.getUserId();
+		for(Count users:userIdAndCountList) {
 			
-			if(id != userId) {
-				
-				spotifyService.getPlaylist(id);
+			ids = users.getUserId();
+			
+			if(userId != ids) {
+				users.setUserId(ids);
+				userIdListExceptMe.add(users);
 			}
 		}
 		
-		model.addAttribute("othersPlaylist", othersPlaylist);
+		model.addAttribute("userIdListExceptMe", userIdListExceptMe);
 		
-		return "music/othersPlaylist";
+		return "music/othersPlaylists";
 	}
-
 }

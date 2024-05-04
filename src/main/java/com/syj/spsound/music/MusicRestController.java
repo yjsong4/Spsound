@@ -183,12 +183,12 @@ public class MusicRestController {
 	}
 	
 	@GetMapping("/test1")
-	public List<List<SearchResult>> userIdTest(HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
+	public List<List<SearchResult>> userIdTest(@RequestParam("userId") String userId, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
 		
-		int userId = (Integer)session.getAttribute("userId");
+		int myId = (Integer)session.getAttribute("userId");
 		int ids = 0;
 		
-		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);		
+		List<Count> userIdAndCountList = musicService.getUserByGenre(myId);		
 		List<Count> userIdListExceptMe = new ArrayList<>();
 		List<List<SearchResult>> othersPlaylists = new ArrayList<>();
 		
@@ -196,7 +196,7 @@ public class MusicRestController {
 			
 			ids = users.getUserId();
 			
-			if(userId != ids) {
+			if(myId != ids) {
 				users.setUserId(ids);
 				userIdListExceptMe.add(users);
 			}

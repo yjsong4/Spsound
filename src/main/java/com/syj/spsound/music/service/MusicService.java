@@ -173,5 +173,6 @@ public class MusicService {
 		
 		return musicRepository.countByGenre(musicRepository.selectGenreList(userId));	
 	}
+	
 			
 }
