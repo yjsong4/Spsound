@@ -16,7 +16,7 @@
 	
 		<div class="d-flex justify-content-between">
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
-			<nav class="menu mt-3 ml-5">
+			<nav class="menu mt-4 ml-5">
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>

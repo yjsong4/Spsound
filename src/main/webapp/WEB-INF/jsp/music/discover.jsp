@@ -15,7 +15,7 @@
 	
 		<div class="d-flex justify-content-between">
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
-			<nav class="menu mt-3 ml-5">
+			<nav class="menu mt-4 ml-5">
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>
@@ -25,6 +25,7 @@
 		</div>
 
 		<div class="music-box d-flex text-center justify-content-center align-items-center">
+		
 			<div class="playlist">
 				<c:forEach var="others" items="${userIdListExceptMe }" varStatus="status">
 				<div>${status.count} - userId : ${others.userId }</div>
@@ -33,10 +34,15 @@
 			</div>
 			
 			<div class="playlist">아티스트 3개 이상 같은 유저</div>
+			
 			<div class="playlist">
+				<div>change selected contents</div>
 				<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+				<div>genre</div>
 				<a href="/spsound/select-artist-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+				<div>artist</div>
 			</div>
+			
 		</div>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>

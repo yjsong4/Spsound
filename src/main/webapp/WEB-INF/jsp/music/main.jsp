@@ -15,7 +15,7 @@
 	
 		<div class="d-flex justify-content-between">
 			<c:import url="/WEB-INF/jsp/include/header.jsp" />
-			<nav class="menu mt-3 ml-5">
+			<nav class="menu mt-4 ml-5">
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>
@@ -24,7 +24,7 @@
 			</nav>	
 		</div>
 		
-		<div class="content-box d-flex justify-content-between">
+		<div class="content-box d-flex justify-content-between align-items-center">
 			<img class="img bg-secondary" src="https://images.ctfassets.net/js6ap5wzepad/5r2jhT1LonYgfLVuB7UYoh/744f35dae83be88ba8239456345c924e/enterprise-image.png?w=700&fm=avif&q=80">
 			
 			<div>
