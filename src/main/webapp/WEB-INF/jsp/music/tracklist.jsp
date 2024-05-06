@@ -25,6 +25,16 @@
 			</nav>	
 		</div>
 		
+		<div class="d-flex justify-content-between mt-5">
+			<div class="d-flex align-items-center playlist-box2">
+				<div class="flex-column ml-5">
+					<div class="playtext1">PLAYLIST</div>
+					<div class="playtext2">Found Some Best Matching Tracks for You!</div>
+				</div>
+			</div>
+			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/5a3e898b-6670-4da8-b2fa-d89cedc1827a/400x400.jpeg" width="300px" height="300px"></div>
+		</div>
+		
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
@@ -42,12 +52,12 @@
 					<td class="pt-4">${result.songTitle }</td>
 					<td class="pt-4">${result.albumName }</td>
 					<td class="pt-4">${result.artistNameList }</td>
-					<!-- <td>${result.aritstInfoUrlList }</td> -->
 					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }"><i class="bi bi-plus-lg"></i></button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
 	</div>
 
@@ -74,7 +84,7 @@
 					}
 				}
 				, error:function() {
-					alert("플레이리스트에 추가 에러");
+					alert("이미 추가된 노래입니다.");
 				}
 			});
 			 

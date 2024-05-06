@@ -146,25 +146,16 @@ a:visited {
     background-color: #b79449;
 }
 
-.footer-box {
-	height: 80px;
-	width : 90%;
-	position: absolute;
-	bottom :0;
-	right: 5%;
-	font-size : 14px;
-}
-
 .left-btn {
 	position: absolute;
-	font-size: 30px;
+	font-size: 34px;
 	top: 47%;
 	left: 3%;
 }
 
 .right-btn {
 	position: absolute;
-	font-size: 30px;
+	font-size: 34px;
 	top: 47%;
 	left: 95%;
 }
@@ -187,17 +178,9 @@ a:visited {
 	color: #f1f06d;
 }
 
-.dropdown > a {
-	outline: none;
-}
-
-.dropdown-menu > a {
-	color: blue;
-	left: 50px;	
-}
-
 .content-box {
 	margin-top: 90px;
+	height: 481px;
 }
 
 .img{
@@ -239,17 +222,70 @@ a:visited {
 }
 
 .music-box {
-	width : 700px;
-	height: 300px;
+	height: 550px;
 }
 
 .playlist {
-	width: 300px;
+	width: 350px;
 	height: 250px;
-	border: 1px solid;
 	margin-top: 50px;
+}
+
+.track-info {
+	font-size: 18px;
+	letter-spacing: 2px;
+	color: #707070;
+	margin-top: 26px;
 }
 
 .bi {
 	font-size: 21px;
+}
+
+.playlist-box {
+	width: 900px;
+	background-color: #f4eaf0;
+	/*#f4eaf0 f1e7ef*/
+}
+
+.playlist-box1 {
+	width: 900px;
+	background-color: #fdfdef;
+}
+
+.playlist-box2 {
+	width: 900px;
+	background-color: #eaffea;
+}
+
+.playlist-box3 {
+	width: 900px;
+	background-color: #fcf1ed;
+}
+
+.playtext1 {
+	font-size: 13px;
+	color: #707070;
+	letter-spacing: 2px;
+	margin-bottom: 1px;
+}
+
+.playtext2 {
+	font-size: 31px;
+	color: #575757;
+	letter-spacing: 3px;
+}
+
+.footer-box {
+    display: block;
+	height: 80px;
+	width: 100%;
+	bottom: 0%;
+	font-size : 14px;
+    margin-top: 80px;
+}
+
+table > thead > tr > th {
+	font-size: 21px;
+	letter-spacing: 2px;
 }

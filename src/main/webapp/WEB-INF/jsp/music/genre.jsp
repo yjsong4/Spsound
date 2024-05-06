@@ -31,10 +31,10 @@
 		<div class="d-flex justify-content-end">
 			<c:choose>
 				<c:when test="${genreCount >= 3 }">
-					<i class="bi bi-chevron-right right-btn" onclick="location.href='/spsound/select-artist-view'"></i>
+					<i class="bi-chevron-right right-btn" onclick="location.href='/spsound/select-artist-view'"></i>
 				</c:when>
 				<c:otherwise>
-					<i class="bi bi-chevron-right right-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>
+					<i class="bi-chevron-right right-btn d-none" onclick="location.href='/spsound/select-artist-view'"></i>
 				</c:otherwise>
 			</c:choose>	
 		</div>

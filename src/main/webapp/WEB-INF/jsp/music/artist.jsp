@@ -29,16 +29,16 @@
 		
 		<div class="d-flex">
 			<div>
-				<i class="bi bi-chevron-left left-btn" onclick="location.href='/spsound/select-genre-view'"></i>
+				<i class="bi-chevron-left left-btn" onclick="location.href='/spsound/select-genre-view'"></i>
 			</div>
 		
 			<div>
 				<c:choose>
 					<c:when test="${artistCount >= 3 }">
-						<i class="bi bi-chevron-right right-btn" onclick="location.href='/spsound/main-view'"></i>
+						<i class="bi-chevron-right right-btn" onclick="location.href='/spsound/main-view'"></i>
 					</c:when>
 					<c:otherwise>
-						<i class="bi bi-chevron-right right-btn d-none" onclick="location.href='/spsound/main-view'"></i>
+						<i class="bi-chevron-right right-btn d-none" onclick="location.href='/spsound/main-view'"></i>
 					</c:otherwise>
 				</c:choose>	
 			</div>

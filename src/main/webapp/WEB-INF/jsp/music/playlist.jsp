@@ -25,6 +25,16 @@
 			</nav>	
 		</div>
 		
+		<div class="d-flex justify-content-between mt-5">
+			<div class="d-flex align-items-center playlist-box">
+				<div class="flex-column ml-5">
+					<div class="playtext1">PLAYLIST</div>
+					<div class="playtext2">Mood Boosting Pop Hits!</div>
+				</div>
+			</div>
+			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/76ff0f09-770f-4544-9119-e7ed568abba7/400x400.jpeg" width="300px" height="300px"></div>
+		</div>
+		
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
@@ -47,6 +57,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 		
 	</div>
 
