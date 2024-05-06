@@ -19,10 +19,12 @@ import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
 import se.michaelthelin.spotify.model_objects.specification.AlbumSimplified;
 import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
+import se.michaelthelin.spotify.model_objects.specification.ExternalUrl;
 import se.michaelthelin.spotify.model_objects.specification.Image;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+import se.michaelthelin.spotify.requests.data.artists.GetArtistsRelatedArtistsRequest;
 import se.michaelthelin.spotify.requests.data.artists.GetArtistsTopTracksRequest;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
@@ -92,23 +94,23 @@ public class SpotifyService {
 			ArtistSimplified[] artists = album.getArtists();
 			String albumName = album.getName();
 
-			ArrayList<String> aritstInfoUrlList = new ArrayList<>();
+//			ArrayList<String> aritstInfoUrlList = new ArrayList<>();
 			ArrayList<String> artistNameList = new ArrayList<>();
 			
-			String aritstInfoUrl = "";
+//			String aritstInfoUrl = "";
 			String artistName = "";
 
 			for(ArtistSimplified artist:artists) {
-				aritstInfoUrl = artist.getExternalUrls().getExternalUrls().get("spotify");
+//				aritstInfoUrl = artist.getExternalUrls().getExternalUrls().get("spotify");
 				artistName = artist.getName();
 				
-				aritstInfoUrlList.add(aritstInfoUrl);
+//				aritstInfoUrlList.add(aritstInfoUrl);
 				artistNameList.add(artistName);
 			}
 		
 			result.setAlbumName(albumName);
 			result.setArtistNameList(artistNameList);
-			result.setAritstInfoUrlList(aritstInfoUrlList);
+//			result.setAritstInfoUrlList(aritstInfoUrlList);
 			result.setSongTitle(songTitle);
 			result.setMusicId(musicId);
 			
@@ -209,6 +211,7 @@ public class SpotifyService {
 					artistNameList.add(artistName);
 				}
 				
+				trackResult.setMusicId(track.getId());
 				trackResult.setAlbumName(albumName);
 				trackResult.setArtistNameList(artistNameList);
 				trackResult.setSongTitle(songTitle);
@@ -218,6 +221,51 @@ public class SpotifyService {
 		}
 		
 		return artistTopTrackList;
+	}
+	
+	public List<SearchResult> getRelatedArtists(int userId) throws ParseException, SpotifyWebApiException, IOException {
+		
+		SpotifyApi spotifyApi = new SpotifyApi.Builder()
+	            .setAccessToken(SpotifyService.accesstoken())
+	            .build();
+	
+		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
+		List<SearchResult> relateArtistList = new ArrayList<>();
+		
+		String artistId ="";
+		
+		for(Artist artist:userArtistList) {
+			
+			artistId = artist.getArtistId();
+			
+			GetArtistsRelatedArtistsRequest getArtistsRelatedArtistsRequest = spotifyApi.getArtistsRelatedArtists(artistId)
+					.build();
+		
+			se.michaelthelin.spotify.model_objects.specification.Artist[] artists = getArtistsRelatedArtistsRequest.execute();
+		
+			for(se.michaelthelin.spotify.model_objects.specification.Artist related:artists) {
+				
+				SearchResult artistResult = new SearchResult();
+				
+				String artistName = related.getName();
+				ExternalUrl externalUrl = related.getExternalUrls();
+				// ExternalUrl(externalUrls={spotify=https://open.spotify.com/artist/1mcTU81TzQhprhouKaTkpq})
+				String urls = externalUrl.toString().substring(34, 88);
+				
+				Image[] images = related.getImages();
+				for(Image image:images) {
+					String imageUrl = image.getUrl();
+					artistResult.setImage(imageUrl);
+				}
+				
+				artistResult.setAlbumName(artistName);
+				artistResult.setAritstInfoUrl(urls);
+				
+				relateArtistList.add(artistResult);
+			}
+		}
+		
+		return relateArtistList;
 	}
 		
 }

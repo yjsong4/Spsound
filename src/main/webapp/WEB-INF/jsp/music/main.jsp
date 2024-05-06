@@ -18,7 +18,7 @@
 			<nav class="menu mt-3 ml-5">
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
-					<li class="nav-item name"><a class="nav-link" href="#">Discover</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view">My Library</a></li>
 				</ul>
 			</nav>	
@@ -39,16 +39,22 @@
 					</div>
 				</nav>
 
-				<div class="music-box d-flex text-center">
-					<div class="playlist">playlist1</div>
-					<div class="playlist">playlist2</div>
-					<div class="playlist">playlist3</div>
+				<div class="d-flex text-center mt-3">
+					<div class="d-flex">
+						<div class="playlist">
+							<a href="/spsound/artistTopTrack-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/3PvcCJcvaQAfcq3XQ9dY8d/69ab8929d686cc7a7d175651c0914643/Voices.png?w=700&fm=webp&q=80" width="150px" height="150px"></a>
+							<div class="track-info">Artists Top Track</div>		
+						</div>
+						<div class="playlist">
+							<a href="/spsound/relatedArtists-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/60TKcNg9WaRjOdf19ndYl3/5a7cde2eab022847ae2c7e759e646a7b/Whoosh.png?w=700&fm=webp&q=80" width="150px" height="150px"></a>
+							<div class="track-info">Related Artists</div>
+						</div>			
+					</div>
 				</div>
-				
 			</div>
 		</div>
-		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+		
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
