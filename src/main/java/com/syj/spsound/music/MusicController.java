@@ -61,7 +61,6 @@ public class MusicController {
 		return "music/main";
 	}
 	
-	
 	@GetMapping("/tracklist-view")
 	public String tracklist(@RequestParam("keyword") String keyword, Model model) throws ParseException, SpotifyWebApiException, IOException {
 		
@@ -85,32 +84,35 @@ public class MusicController {
 	}
 
 	@GetMapping("/discover-view")
-	public String discover() {
+	public String discover(HttpSession session, Model model) {
 		
-		return "music/discover";
-	}
-	
-	@GetMapping("/othersPlaylists-view")
-	public String othersPlaylists(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
-		
-		int userId = (Integer)session.getAttribute("userId");
+		int myId = (Integer)session.getAttribute("userId");
 		int ids = 0;
 		
-		List<Count> userIdAndCountList = musicService.getUserByGenre(userId);		
+		List<Count> userIdAndCountList = musicService.getUserByGenre(myId);		
 		List<Count> userIdListExceptMe = new ArrayList<>();
 		
 		for(Count users:userIdAndCountList) {
 			
 			ids = users.getUserId();
 			
-			if(userId != ids) {
+			if(myId != ids) {
 				users.setUserId(ids);
 				userIdListExceptMe.add(users);
 			}
 		}
-		
 		model.addAttribute("userIdListExceptMe", userIdListExceptMe);
 		
+		return "music/discover";
+	}
+
+	@GetMapping("/othersPlaylists-view")
+	public String othersPlaylists(@RequestParam("userId") int userId, Model model) throws ParseException, SpotifyWebApiException, IOException {
+		
+		List<SearchResult> othersPlaylists = spotifyService.getPlaylist(userId);
+		
+		model.addAttribute("othersPlaylists", othersPlaylists);
+				
 		return "music/othersPlaylists";
 	}
 	
@@ -124,5 +126,17 @@ public class MusicController {
 		model.addAttribute("artistTopTrackList", artistTopTrackList);
 		
 		return "music/artistTopTrack";
+	}
+	
+	@GetMapping("/relatedArtists-view")
+	public String relatedArtists(HttpSession session, Model model) throws ParseException, SpotifyWebApiException, IOException {
+		
+		int userId = (Integer)session.getAttribute("userId");
+
+		List<SearchResult> relatedArtistsList = spotifyService.getRelatedArtists(userId);
+		
+		model.addAttribute("relatedArtistsList", relatedArtistsList);
+		
+		return "music/relatedArtists";
 	}
 }

@@ -36,48 +36,51 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="others" items="${userIdListExceptMe }">
+				<c:forEach var="others" items="${othersPlaylists }">
 				<tr>
-					<td></td>
-					<td class="pt-4"></td>
-					<td class="pt-4">${others.userId}</td>
-					<td class="pt-4">${others.count}</td>
-					<td class="pt-4">
-						<form class="d-flex" action="/spsound/othersPlaylists-view" method="get">
-							<button type="submit" class="btn btn-block move" data-user-id="${others.userId}">보러가기</button>
-	  					</form>
-					</td>
-										
+					<td class="pt-4"><img src="${others.image }"></td>
+					<td class="pt-4">${others.songTitle}</td>
+					<td class="pt-4">${others.albumName}</td>
+					<td class="pt-4">${others.artistNameList }</td>
+					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-music-id="${result.musicId }"><i class="bi bi-plus-lg"></i></button></td>					
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
-	
-	
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>	
 <script>
+	
 	$(document).ready(function() {
 		
-		$(".move").on("click", function() {
+		$(".add-btn").on("click", function() {
 			
-			let userId = $(this).data("user-id");
-
+			let musicId = $(this).data("music-id");
 			
-			
-			
+			$.ajax({
+				type:"post"
+				, url:"/music/add/playlist"
+				, data:{"musicId":musicId}
+				, success:function(data) {
+					if(data.result == "success") {
+						alert("추가했습니다.");
+					} else {
+						alert("플레이리스트에 추가 실패");
+					}
+				}
+				, error:function() {
+					alert("이미 추가된 노래입니다.");
+				}
+			});
+			 
 		});
-		
 		
 	});
 
-
-
 </script>
-
-
 </body>
 </html>

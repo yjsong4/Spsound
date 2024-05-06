@@ -1,7 +1,6 @@
 package com.syj.spsound.music;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.syj.spsound.music.dto.Count;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
@@ -181,35 +179,6 @@ public class MusicRestController {
 		}
 		
 		return resultMap;		
-	}
-	
-	@GetMapping("/test1")
-	public List<List<SearchResult>> userIdTest(@RequestParam("userId") String userId, HttpSession session) throws ParseException, SpotifyWebApiException, IOException {
-		
-		int myId = (Integer)session.getAttribute("userId");
-		int ids = 0;
-		
-		List<Count> userIdAndCountList = musicService.getUserByGenre(myId);		
-		List<Count> userIdListExceptMe = new ArrayList<>();
-		List<List<SearchResult>> othersPlaylists = new ArrayList<>();
-		
-		for(Count users:userIdAndCountList) {
-			
-			ids = users.getUserId();
-			
-			if(myId != ids) {
-				users.setUserId(ids);
-				userIdListExceptMe.add(users);
-			}
-		}
-		
-		for(int i = 0; i < userIdListExceptMe.size(); i++) {
-			
-			List<SearchResult> add = spotifyService.getPlaylist(userIdListExceptMe.get(i).getUserId());
-			othersPlaylists.add(add);
-		}
-		
-		return othersPlaylists;
 	}
 	
 }
