@@ -48,7 +48,7 @@
 				<c:forEach var="related" items="${relatedArtistsList }">
 				<tr>
 					<td><img src="${related.image }" width="64px" height="64px"></td>
-					<td class="pt-4"><a href="${related.aritstInfoUrl }">${related.albumName }</a></td>
+					<td class="pt-4"><a id="related" href="${related.aritstInfoUrl }">${related.albumName }</a></td>
 					<td class="pt-4">${related.artistGenre }</td>
 					<td class="pt-4">${related.popularity }</td>
 				</tr>

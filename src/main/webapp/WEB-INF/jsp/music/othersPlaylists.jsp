@@ -25,6 +25,16 @@
 			</nav>	
 		</div>
 		
+		<div class="d-flex justify-content-between mt-5">
+			<div class="d-flex align-items-center playlist-box2">
+				<div class="flex-column ml-5">
+					<div class="playtext1">PLAYLIST</div>
+					<div class="playtext2">Explore Other Users' Playlists!</div>
+				</div>
+			</div>
+			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/5a3e898b-6670-4da8-b2fa-d89cedc1827a/400x400.jpeg" width="300px" height="300px"></div>
+		</div>
+		
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
@@ -82,5 +92,6 @@
 	});
 
 </script>
+
 </body>
 </html>

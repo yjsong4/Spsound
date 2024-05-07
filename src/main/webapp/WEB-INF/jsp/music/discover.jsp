@@ -24,30 +24,35 @@
 			</nav>	
 		</div>
 
+		<h2 class="discover-logo text-center">Discover Tracks and Playlists</h2>
 		<div class="music-box d-flex text-center justify-content-center align-items-center">
-		
-			<div class="playlist">
-				<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
-				<div>${status.count}번 - userId : ${others.userId }</div>
-				<a href="/spsound/othersPlaylists-view?userId=${others.userId }">이동</a>
-				</c:forEach>
+			<div>
+				<h4 class="box-name">matched by <span class="fontspan">Genre</span></h4>
+				<div class="genre-box">
+					<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
+					<a href="/spsound/othersPlaylists-view?userId=${others.userId }"><div>playlist ${status.count}</div></a>
+					</c:forEach>
+				</div>
 			</div>
 			
-			<div class="playlist">
-				<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
-				<div>${status.count}번 - userId : ${others.userId }</div>
-				<a href="/spsound/othersPlaylists-view?userId=${others.userId }">이동</a>
-				</c:forEach>
+			<div>
+				<h4 class="box-name">matched by <span class="fontspan">Artist</span></h4>
+				<div class="artist-box text-white">
+					<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
+					<a href="/spsound/othersPlaylists-view?userId=${others.userId }"><div>playlist ${status.count}</div></a>
+					</c:forEach>
+				</div>
 			</div>
 
-			<div class="playlist">
-				<div>change selected contents</div>
-				<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
-				<div>genre</div>
-				<a href="/spsound/select-artist-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
-				<div>artist</div>
+			<div>
+				<h4 class="box-name">change selected contents</h4>
+				<div class="update-box">
+					<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+					<div>genre</div>
+					<a href="/spsound/select-artist-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+					<div>artist</div>
+				</div>
 			</div>
-			
 		</div>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>

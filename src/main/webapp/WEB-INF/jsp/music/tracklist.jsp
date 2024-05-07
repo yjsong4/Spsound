@@ -47,7 +47,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="result" items="${searchResultList }">
-				<tr >
+				<tr>
 					<td><img src="${result.image }"></td>
 					<td class="pt-4">${result.songTitle }</td>
 					<td class="pt-4">${result.albumName }</td>
@@ -93,5 +93,6 @@
 	});
 
 </script>
+
 </body>
 </html>

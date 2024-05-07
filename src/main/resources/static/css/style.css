@@ -40,6 +40,11 @@ header > .logo-box {
 	font-size:13px;
 }
 
+#related {
+	color: black;
+	letter-spacing: 2px;
+}
+
 a:visited {
 	color: #896136;
 }
@@ -221,14 +226,47 @@ a:visited {
 	letter-spacing: 2px;	
 }
 
-.music-box {
-	height: 550px;
-}
-
 .playlist {
 	width: 350px;
 	height: 250px;
 	margin-top: 50px;
+}
+
+.discover-logo {
+	margin-top:45px;
+	letter-spacing: 2px;
+}
+
+.music-box {
+	height: 600px;
+	margin-top: 50px;
+}
+
+.box-name {
+	margin-bottom: 30px;
+	letter-spacing: 2px;
+}
+
+.fontspan {
+	color: #8000ff;
+}
+
+.genre-box {
+	width: 350px;
+	height: 250px;
+	background-color: #408080;
+}
+
+.artist-box {
+	width: 350px;
+	height: 250px;
+	background-color: #ff80ff;
+}
+
+.update-box {
+	width: 350px;
+	height: 250px;
+	background-color: #ff8040;
 }
 
 .track-info {
@@ -287,5 +325,9 @@ a:visited {
 
 table > thead > tr > th {
 	font-size: 21px;
-	letter-spacing: 2px;
+	letter-spacing: 3px;
+}
+
+table {
+	letter-spacing: 1px;
 }
