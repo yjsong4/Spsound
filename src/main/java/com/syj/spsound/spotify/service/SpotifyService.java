@@ -261,7 +261,7 @@ public class SpotifyService {
 					String imageUrl = image.getUrl();
 					artistResult.setImage(imageUrl);
 				}
-			
+				
 				artistResult.setArtistGenre(genreList);
 				artistResult.setAlbumName(artistName);
 				artistResult.setAritstInfoUrl(urls);

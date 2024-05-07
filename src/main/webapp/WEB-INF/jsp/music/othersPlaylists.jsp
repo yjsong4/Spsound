@@ -26,13 +26,13 @@
 		</div>
 		
 		<div class="d-flex justify-content-between mt-5">
-			<div class="d-flex align-items-center playlist-box2">
+			<div class="d-flex align-items-center playlist-box4">
 				<div class="flex-column ml-5">
-					<div class="playtext1">PLAYLIST</div>
-					<div class="playtext2">Explore Other Users' Playlists!</div>
+					<div class="playtext1 text-white">PLAYLIST</div>
+					<div class="playtext2 text-white">Explore Other Users' Playlists!</div>
 				</div>
 			</div>
-			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/5a3e898b-6670-4da8-b2fa-d89cedc1827a/400x400.jpeg" width="300px" height="300px"></div>
+			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/7ebe7cc6-389f-4ef5-92a4-5d279a569008/400x400.jpeg" width="300px" height="300px"></div>
 		</div>
 		
 		<table class="table text-center mt-5">

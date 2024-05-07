@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>추천화면</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -24,22 +25,24 @@
 			</nav>	
 		</div>
 
-		<h2 class="discover-logo text-center">Discover Tracks and Playlists</h2>
-		<div class="music-box d-flex text-center justify-content-center align-items-center">
-			<div>
+		<h2 class="discover-logo text-center">Discover Tracks and Playlists<i class="bi bi-music-note ml-1"></i></h2>
+		<div class="music-box d-flex justify-content-center align-items-center text-center">
+			<div class="mr-5">
 				<h4 class="box-name">matched by <span class="fontspan">Genre</span></h4>
 				<div class="genre-box">
 					<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
-					<a href="/spsound/othersPlaylists-view?userId=${others.userId }"><div>playlist ${status.count}</div></a>
+					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
+					<div>Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>
 			</div>
 			
-			<div>
+			<div class="mr-5">
 				<h4 class="box-name">matched by <span class="fontspan">Artist</span></h4>
-				<div class="artist-box text-white">
+				<div class="artist-box">
 					<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
-					<a href="/spsound/othersPlaylists-view?userId=${others.userId }"><div>playlist ${status.count}</div></a>
+					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
+					<div>Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>
 			</div>
@@ -47,10 +50,14 @@
 			<div>
 				<h4 class="box-name">change selected contents</h4>
 				<div class="update-box">
-					<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
-					<div>genre</div>
-					<a href="/spsound/select-artist-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
-					<div>artist</div>
+					<div class="pr-5">
+						<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+						<div class="fontspan mt-2">genre</div>
+					</div>
+					<div>
+						<a href="/spsound/select-artist-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>
+						<div class="fontspan mt-2">artist</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -61,5 +61,5 @@ public class SearchResult {
 	public void setArtistNameList(List<String> artistNameList) {
 		this.artistNameList = artistNameList;
 	}
-
+	
 }

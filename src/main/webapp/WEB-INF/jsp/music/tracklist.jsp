@@ -32,7 +32,7 @@
 					<div class="playtext2">Found Some Best Matching Tracks for You!</div>
 				</div>
 			</div>
-			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/5a3e898b-6670-4da8-b2fa-d89cedc1827a/400x400.jpeg" width="300px" height="300px"></div>
+			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/82b62fcc-c729-4c22-90fc-b7d23839753c/400x400.jpeg" width="300px" height="300px"></div>
 		</div>
 		
 		<table class="table text-center mt-5">

@@ -73,9 +73,9 @@ a:visited {
 #floating2 {
     top: 77px;
     left: 1060px;
-    width: 173px;
-    height: 173px;
-    line-height: 159px;
+    width: 175px;
+    height: 175px;
+    line-height: 162px;
     background-color: #c7a6e6;
 }
 
@@ -233,12 +233,12 @@ a:visited {
 }
 
 .discover-logo {
-	margin-top:45px;
-	letter-spacing: 2px;
+	margin-top:55px;
+	letter-spacing: 4px;
 }
 
 .music-box {
-	height: 600px;
+	height: 400px;
 	margin-top: 50px;
 }
 
@@ -248,25 +248,50 @@ a:visited {
 }
 
 .fontspan {
-	color: #8000ff;
+	color: #7f5934;;
 }
 
 .genre-box {
 	width: 350px;
 	height: 250px;
-	background-color: #408080;
+	background-color: #eff2ce;
+	border: 3px solid;
+	border-radius: 90% 65% 79% 63%;
+	margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    font-size: 17px;
 }
 
 .artist-box {
 	width: 350px;
 	height: 250px;
-	background-color: #ff80ff;
+	background-color: #e6f0ec;
+	border: 3px solid;
+	border-radius: 55% 79% 64% 91%;
+	margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    font-size: 17px;
 }
 
 .update-box {
 	width: 350px;
 	height: 250px;
-	background-color: #ff8040;
+	background-color: #f5e7e2;
+	border: 3px groove;
+	border-radius: 45% 33% 55% 39%;
+	margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
 }
 
 .track-info {
@@ -293,12 +318,17 @@ a:visited {
 
 .playlist-box2 {
 	width: 900px;
-	background-color: #eaffea;
+	background-color: #fdf4fd;
 }
 
 .playlist-box3 {
 	width: 900px;
 	background-color: #fcf1ed;
+}
+
+.playlist-box4 {
+	width: 900px;
+	background-color: #2d2d2d;
 }
 
 .playtext1 {
