@@ -27,14 +27,19 @@
 		<div class="music-box d-flex text-center justify-content-center align-items-center">
 		
 			<div class="playlist">
-				<c:forEach var="others" items="${userIdListExceptMe }" varStatus="status">
-				<div>${status.count} - userId : ${others.userId }</div>
+				<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
+				<div>${status.count}번 - userId : ${others.userId }</div>
 				<a href="/spsound/othersPlaylists-view?userId=${others.userId }">이동</a>
 				</c:forEach>
 			</div>
 			
-			<div class="playlist">아티스트 3개 이상 같은 유저</div>
-			
+			<div class="playlist">
+				<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
+				<div>${status.count}번 - userId : ${others.userId }</div>
+				<a href="/spsound/othersPlaylists-view?userId=${others.userId }">이동</a>
+				</c:forEach>
+			</div>
+
 			<div class="playlist">
 				<div>change selected contents</div>
 				<a href="/spsound/select-genre-view"><img src="https://images.ctfassets.net/ojtnytzl1djm/66P7mcRleXxzLBOrMNNDmz/b1671e7dc2bf241b206125eed1020ad5/Whistle.png?w=700&fm=webp&q=80" width="64px" height="64px"></a>

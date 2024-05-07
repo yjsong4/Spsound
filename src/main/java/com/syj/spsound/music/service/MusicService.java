@@ -193,5 +193,9 @@ public class MusicService {
 		return musicRepository.countByGenre(musicRepository.selectGenreList(userId));	
 	}
 	
-			
+	public List<Count> getUserByArtist(int userId) {
+		
+		return musicRepository.countByArtist(musicRepository.selectArtistList(userId));
+	}
+	
 }

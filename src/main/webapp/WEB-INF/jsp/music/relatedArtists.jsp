@@ -40,15 +40,13 @@
 				<tr>
 					<th><i class="bi bi-music-player"></i></th>
 					<th>Artist</th>
-					<th>Url</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="related" items="${relatedArtistsList }">
 				<tr>
 					<td><img src="${related.image }" width="64px" height="64px"></td>
-					<td class="pt-4">${related.albumName }</td>
-					<td><a href="${related.aritstInfoUrl }"></a></td>
+					<td class="pt-4"><a href="${related.aritstInfoUrl }">${related.albumName }</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

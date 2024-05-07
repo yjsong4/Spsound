@@ -194,11 +194,29 @@
 			, COUNT(*) AS `count`
 		FROM 
 			`genre`
-		WHERE 
+		WHERE
 			`genre`
 		IN
 			<foreach collection="userGenreList" item="userGenreList" open="(" separator="," close=")">
 				#{userGenreList.genre}
+			</foreach>
+		GROUP BY 
+			`userId`
+		HAVING 
+			`count` >= 3
+	</select>
+	
+	<select id="countByArtist" parameterType="java.util.List" resultType="com.syj.spsound.music.dto.Count">
+		SELECT
+			`userId`
+			, COUNT(*) AS `count`
+		FROM 
+			`artist`
+		WHERE 
+			`artist`
+		IN
+			<foreach collection="userArtistList" item="userArtistList" open="(" separator="," close=")">
+				#{userArtistList.artist}
 			</foreach>
 		GROUP BY 
 			`userId`

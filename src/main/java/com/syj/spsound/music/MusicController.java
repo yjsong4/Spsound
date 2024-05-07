@@ -84,24 +84,41 @@ public class MusicController {
 	}
 
 	@GetMapping("/discover-view")
-	public String discover(HttpSession session, Model model) {
+	public String discoverGenre(HttpSession session, Model model) {
 		
 		int myId = (Integer)session.getAttribute("userId");
-		int ids = 0;
+		int idsByGenre = 0;
 		
-		List<Count> userIdAndCountList = musicService.getUserByGenre(myId);		
-		List<Count> userIdListExceptMe = new ArrayList<>();
+		List<Count> genreCountList = musicService.getUserByGenre(myId);
+		List<Count> idsByGenreCount = new ArrayList<>();
 		
-		for(Count users:userIdAndCountList) {
+		for(Count countByGenre:genreCountList) {
 			
-			ids = users.getUserId();
+			idsByGenre = countByGenre.getUserId();
 			
-			if(myId != ids) {
-				users.setUserId(ids);
-				userIdListExceptMe.add(users);
+			if(myId != idsByGenre) {
+				countByGenre.setUserId(idsByGenre);
+				idsByGenreCount.add(countByGenre);
 			}
 		}
-		model.addAttribute("userIdListExceptMe", userIdListExceptMe);
+		model.addAttribute("idsByGenreCount", idsByGenreCount);
+		
+	
+		int idsByArtist = 0;
+		List<Count> artistCountList = musicService.getUserByArtist(myId);
+		List<Count> idsByArtistCount = new ArrayList<>();
+		
+		for(Count countByArtist:artistCountList) {
+			
+			idsByArtist = countByArtist.getUserId();
+			
+			if(myId != idsByArtist) {
+				countByArtist.setUserId(idsByArtist);
+				idsByArtistCount.add(countByArtist);
+			}
+		}
+		
+		model.addAttribute("idsByArtistCount", idsByArtistCount);
 		
 		return "music/discover";
 	}
