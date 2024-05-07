@@ -35,7 +35,7 @@ header > .logo-box {
 	margin-left: 5px;
 }
 
-a:link {
+.userlink > a:link {
 	color:navy;
 	font-size:13px;
 }

@@ -2,6 +2,7 @@ package com.syj.spsound.spotify.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
@@ -230,7 +231,7 @@ public class SpotifyService {
 	            .build();
 	
 		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
-		List<SearchResult> relateArtistList = new ArrayList<>();
+		List<SearchResult> relateArtistList = new ArrayList<>(); 
 		
 		String artistId ="";
 		
@@ -246,21 +247,25 @@ public class SpotifyService {
 			for(se.michaelthelin.spotify.model_objects.specification.Artist related:artists) {
 				
 				SearchResult artistResult = new SearchResult();
-				
+
 				String artistName = related.getName();
 				ExternalUrl externalUrl = related.getExternalUrls();
 				// ExternalUrl(externalUrls={spotify=https://open.spotify.com/artist/1mcTU81TzQhprhouKaTkpq})
 				String urls = externalUrl.toString().substring(34, 88);
+
+				String[] arr = related.getGenres();
+				List<String> genreList = Arrays.asList(arr);
 				
 				Image[] images = related.getImages();
 				for(Image image:images) {
 					String imageUrl = image.getUrl();
 					artistResult.setImage(imageUrl);
 				}
-				
+			
+				artistResult.setArtistGenre(genreList);
 				artistResult.setAlbumName(artistName);
 				artistResult.setAritstInfoUrl(urls);
-				
+				artistResult.setPopularity(related.getPopularity());
 				relateArtistList.add(artistResult);
 			}
 		}

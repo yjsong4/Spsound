@@ -103,8 +103,8 @@ public class MusicController {
 		}
 		model.addAttribute("idsByGenreCount", idsByGenreCount);
 		
-	
 		int idsByArtist = 0;
+		
 		List<Count> artistCountList = musicService.getUserByArtist(myId);
 		List<Count> idsByArtistCount = new ArrayList<>();
 		
@@ -117,7 +117,6 @@ public class MusicController {
 				idsByArtistCount.add(countByArtist);
 			}
 		}
-		
 		model.addAttribute("idsByArtistCount", idsByArtistCount);
 		
 		return "music/discover";

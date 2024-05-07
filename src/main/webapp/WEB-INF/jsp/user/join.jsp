@@ -24,7 +24,7 @@
 					<input type="password" placeholder="Confirm password" class="form-control mt-4" id="confirmPasswordInput">
 					<button type="button" class="btn btn-block text-white main-btn" id="joinBtn">JOIN</button>
 				</div>
-				<div class="text-center small"><a href="/user/login-view">Already have an account?</a></div>
+				<div class="text-center small userlink"><a href="/user/login-view">Already have an account?</a></div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

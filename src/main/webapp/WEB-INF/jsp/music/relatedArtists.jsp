@@ -40,6 +40,8 @@
 				<tr>
 					<th><i class="bi bi-music-player"></i></th>
 					<th>Artist</th>
+					<th>Genre</th>
+					<th>Popularity</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -47,6 +49,8 @@
 				<tr>
 					<td><img src="${related.image }" width="64px" height="64px"></td>
 					<td class="pt-4"><a href="${related.aritstInfoUrl }">${related.albumName }</a></td>
+					<td class="pt-4">${related.artistGenre }</td>
+					<td class="pt-4">${related.popularity }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
