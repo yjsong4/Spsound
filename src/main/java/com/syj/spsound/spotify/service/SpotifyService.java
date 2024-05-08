@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.apache.hc.core5.http.ParseException;
@@ -16,6 +17,8 @@ import com.syj.spsound.music.domain.Artist;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.repository.MusicRepository;
 import com.syj.spsound.music.service.MusicService;
+import com.syj.spsound.user.domain.User;
+import com.syj.spsound.user.service.UserService;
 
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -45,8 +48,8 @@ public class SpotifyService {
     @Autowired
     private MusicRepository musicRepository;
     
-//	@Autowired
-//	private UserService userService;
+	@Autowired
+	private UserService userService;
     
     public static String accesstoken() {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
@@ -143,6 +146,8 @@ public class SpotifyService {
 		
 		for(Track track:tracks) {
 			
+			User user = userService.getUser(userId);
+			
 			SearchResult trackResult = new SearchResult();
 			
 			String songTitle = track.getName();
@@ -165,6 +170,7 @@ public class SpotifyService {
 				artistNameList.add(artistName);
 			}
 			
+			trackResult.setUserId(user.getId());
 			trackResult.setMusicId(track.getId());
 			trackResult.setSongTitle(songTitle);
 			trackResult.setArtistNameList(artistNameList);
@@ -234,7 +240,6 @@ public class SpotifyService {
 	
 		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
 		List<SearchResult> relateArtistList = new ArrayList<>(); 
-		
 		String artistId ="";
 		
 		for(Artist artist:userArtistList) {
@@ -269,14 +274,15 @@ public class SpotifyService {
 				artistResult.setAlbumName(artistName);
 				artistResult.setAritstInfoUrl(urls);
 				artistResult.setPopularity(related.getPopularity());
-								
-		       
-				
+									
 				relateArtistList.add(artistResult);
-				List<SearchResult> relateArtistList1 = relateArtistList.stream().distinct().collect(Collectors.toList());
-				
 			}
 		}
+		
+		relateArtistList = relateArtistList
+				.stream()
+				.collect(Collectors.toConcurrentMap(SearchResult::getArtistId, Function.identity(), (p, g) -> p)).values()
+				.stream().collect(Collectors.toList());
 		
 		Collections.sort(relateArtistList);
 		return relateArtistList;
