@@ -31,7 +31,7 @@
 				<h4 class="box-name">matched by <span class="fontspan">Genre</span></h4>
 				<div class="genre-box">
 					<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
-					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
+					<a href="/spsound/playlist-view?userId=${others.userId }">
 					<div class="playlist-link">Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>
@@ -41,7 +41,7 @@
 				<h4 class="box-name">matched by <span class="fontspan">Artist</span></h4>
 				<div class="artist-box">
 					<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
-					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
+					<a href="/spsound/playlist-view?userId=${others.userId }">
 					<div class="playlist-link">Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>

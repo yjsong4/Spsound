@@ -11,6 +11,7 @@ public class SearchResult implements Comparable<SearchResult> {
 	private String image;
 	private String aritstInfoUrl;
 	private int popularity;
+	private int userId;
 	private List<String> artistGenre;
 	private List<String> artistNameList;
 	
@@ -71,6 +72,12 @@ public class SearchResult implements Comparable<SearchResult> {
 	}
 	public void setArtistNameList(List<String> artistNameList) {
 		this.artistNameList = artistNameList;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 }

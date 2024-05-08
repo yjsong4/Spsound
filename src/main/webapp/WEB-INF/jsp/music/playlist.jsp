@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나의 플레이리스트</title>
+<title>추천 플레이리스트</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
@@ -48,25 +48,54 @@
 			<tbody>
 				<c:forEach var="playlist" items="${playlist }">
 				<tr>
-					<td><img src="${playlist.image }"></td>
-					<td class="pt-4">${playlist.songTitle }</td>
-					<td class="pt-4">${playlist.albumName }</td>
+					<td class="pt-4"><img src="${playlist.image }"></td>
+					<td class="pt-4">${playlist.songTitle}</td>
+					<td class="pt-4">${playlist.albumName}</td>
 					<td class="pt-4">${playlist.artistNameList }</td>
-					<td class="pt-4"><button type="button" class="btn btn-block delete-btn" data-music-id="${playlist.musicId }"><i class="bi bi-dash-lg bi-type-bold"></i></button></td>
+					
+					<c:choose>
+						<c:when test="${userId eq playlist.userId }">
+							<td class="pt-4"><button type="button" class="btn btn-block delete-btn" data-music-id="${playlist.musicId }"><i class="bi bi-dash-lg bi-type-bold"></i></button></td>
+						</c:when>
+						<c:otherwise>
+							<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-music-id="${playlist.musicId }"><i class="bi bi-plus-lg"></i></button></td>					
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
-		
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>	
 <script>
 	
 	$(document).ready(function() {
+		
+		$(".add-btn").on("click", function() {
+			
+			let musicId = $(this).data("music-id");
+			
+			$.ajax({
+				type:"post"
+				, url:"/music/add/playlist"
+				, data:{"musicId":musicId}
+				, success:function(data) {
+					if(data.result == "success") {
+						alert("추가했습니다.");
+					} else {
+						alert("플레이리스트에 추가 실패");
+					}
+				}
+				, error:function() {
+					alert("이미 추가된 노래입니다.");
+				}
+			});
+			 
+		});
 		
 		$(".delete-btn").on("click", function() {
 			
@@ -93,7 +122,7 @@
 			
 		});
 		
-	}); 
+	});
 
 </script>
 

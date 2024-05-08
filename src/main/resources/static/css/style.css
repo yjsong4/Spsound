@@ -249,9 +249,9 @@ a:visited {
 
 .playlist-link {
 	color: #896136;
-	font-size: 15px;
+	font-size: 16px;
 	font-style: italic;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 .box-name {
