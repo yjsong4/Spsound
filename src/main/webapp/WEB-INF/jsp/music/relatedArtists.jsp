@@ -42,7 +42,7 @@
 					<th>Artist</th>
 					<th>Genre</th>
 					<th>Popularity</th>
-					<th></th>
+					<th><i class="bi bi-music-note-list"></i></th>
 				</tr>
 			</thead>
 			<tbody>
