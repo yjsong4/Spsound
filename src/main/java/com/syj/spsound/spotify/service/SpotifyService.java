@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -268,7 +269,12 @@ public class SpotifyService {
 				artistResult.setAlbumName(artistName);
 				artistResult.setAritstInfoUrl(urls);
 				artistResult.setPopularity(related.getPopularity());
+								
+		       
+				
 				relateArtistList.add(artistResult);
+				List<SearchResult> relateArtistList1 = relateArtistList.stream().distinct().collect(Collectors.toList());
+				
 			}
 		}
 		
