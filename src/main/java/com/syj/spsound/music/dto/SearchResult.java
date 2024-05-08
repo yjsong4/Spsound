@@ -2,8 +2,8 @@ package com.syj.spsound.music.dto;
 
 import java.util.List;
 
-public class SearchResult {
-
+public class SearchResult implements Comparable<SearchResult> {
+	
 	private String songTitle;
 	private String albumName;
 	private String musicId;
@@ -14,6 +14,16 @@ public class SearchResult {
 	private List<String> artistGenre;
 	private List<String> artistNameList;
 	
+	@Override
+	public int compareTo(SearchResult searchResult) {
+		return searchResult.popularity - popularity;
+		}
+	public int getPopularity() {
+		return popularity;
+	}
+	public void setPopularity(int popularity) {
+		this.popularity = popularity;
+	}
 	public String getSongTitle() {
 		return songTitle;
 	}
@@ -50,12 +60,6 @@ public class SearchResult {
 	public void setAritstInfoUrl(String aritstInfoUrl) {
 		this.aritstInfoUrl = aritstInfoUrl;
 	}
-	public int getPopularity() {
-		return popularity;
-	}
-	public void setPopularity(int popularity) {
-		this.popularity = popularity;
-	}
 	public List<String> getArtistGenre() {
 		return artistGenre;
 	}
@@ -68,5 +72,5 @@ public class SearchResult {
 	public void setArtistNameList(List<String> artistNameList) {
 		this.artistNameList = artistNameList;
 	}
-		
+	
 }

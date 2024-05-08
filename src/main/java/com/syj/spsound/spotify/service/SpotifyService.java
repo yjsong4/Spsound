@@ -3,6 +3,7 @@ package com.syj.spsound.spotify.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.hc.core5.http.ParseException;
@@ -271,6 +272,7 @@ public class SpotifyService {
 			}
 		}
 		
+		Collections.sort(relateArtistList);
 		return relateArtistList;
 	}
 		
