@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.syj.spsound.music.domain.Artist;
+import com.syj.spsound.music.dto.RelatedArtist;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.repository.MusicRepository;
 import com.syj.spsound.music.service.MusicService;
@@ -232,14 +233,14 @@ public class SpotifyService {
 		return artistTopTrackList;
 	}
 	
-	public List<SearchResult> getRelatedArtists(int userId) throws ParseException, SpotifyWebApiException, IOException {
+	public List<RelatedArtist> getRelatedArtists(int userId) throws ParseException, SpotifyWebApiException, IOException {
 		
 		SpotifyApi spotifyApi = new SpotifyApi.Builder()
 	            .setAccessToken(SpotifyService.accesstoken())
 	            .build();
 	
 		List<Artist> userArtistList = musicRepository.selectArtistList(userId);
-		List<SearchResult> relateArtistList = new ArrayList<>(); 
+		List<RelatedArtist> relateArtistList = new ArrayList<>(); 
 		String artistId ="";
 		
 		for(Artist artist:userArtistList) {
@@ -253,7 +254,7 @@ public class SpotifyService {
 		
 			for(se.michaelthelin.spotify.model_objects.specification.Artist related:artists) {
 				
-				SearchResult artistResult = new SearchResult();
+				RelatedArtist artistResult = new RelatedArtist();
 
 				String artistName = related.getName();
 				ExternalUrl externalUrl = related.getExternalUrls();
@@ -271,7 +272,7 @@ public class SpotifyService {
 				
 				artistResult.setArtistId(related.getId());
 				artistResult.setArtistGenre(genreList);
-				artistResult.setAlbumName(artistName);
+				artistResult.setArtistName(artistName);
 				artistResult.setAritstInfoUrl(urls);
 				artistResult.setPopularity(related.getPopularity());
 									
@@ -281,7 +282,7 @@ public class SpotifyService {
 		
 		relateArtistList = relateArtistList
 				.stream()
-				.collect(Collectors.toConcurrentMap(SearchResult::getArtistId, Function.identity(), (p, g) -> p)).values()
+				.collect(Collectors.toConcurrentMap(RelatedArtist::getArtistId, Function.identity(), (p, g) -> p)).values()
 				.stream().collect(Collectors.toList());
 		
 		Collections.sort(relateArtistList);

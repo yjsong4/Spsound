@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.syj.spsound.music.dto.Choice;
 import com.syj.spsound.music.dto.Count;
+import com.syj.spsound.music.dto.RelatedArtist;
 import com.syj.spsound.music.dto.SearchResult;
 import com.syj.spsound.music.service.MusicService;
 import com.syj.spsound.spotify.service.SpotifyService;
@@ -137,7 +138,7 @@ public class MusicController {
 		
 		int userId = (Integer)session.getAttribute("userId");
 
-		List<SearchResult> relatedArtistsList = spotifyService.getRelatedArtists(userId);
+		List<RelatedArtist> relatedArtistsList = spotifyService.getRelatedArtists(userId);
 		
 		model.addAttribute("relatedArtistsList", relatedArtistsList);
 		

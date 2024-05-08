@@ -47,13 +47,12 @@
 			</thead>
 			<tbody>
 				<c:forEach var="related" items="${relatedArtistsList }">
-				<c:set var="name" value="${related.albumName }" />
 				<tr>
 					<td><img src="${related.image }" width="64px" height="64px"></td>
-					<td class="pt-4"><a id="related" href="${related.aritstInfoUrl }">${related.albumName }</a></td>
+					<td class="pt-4"><a id="related" href="${related.aritstInfoUrl }">${related.artistName }</a></td>
 					<td class="pt-4">${related.artistGenre }</td>
 					<td class="pt-4">${related.popularity }</td>
-					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-artist-id="${related.artistId }" data-name-id="${related.albumName }"><i class="bi bi-plus-lg"></i></button></td>
+					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-artist-id="${related.artistId }" data-name-id="${related.artistName }"><i class="bi bi-plus-lg"></i></button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
