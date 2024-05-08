@@ -97,7 +97,6 @@
 						if(data.result == "success") {
 							
 							clickCount ++;
-							alert(artist + " 선택");
 							location.reload();
 							
 							if(clickCount >= 3) {

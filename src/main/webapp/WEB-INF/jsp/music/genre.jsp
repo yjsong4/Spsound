@@ -90,7 +90,6 @@
 						if(data.result == "success") {
 							
 							clickCount ++;
-							alert(genre + " 선택");
 							location.reload();
 							
 							if(clickCount >= 3) {
