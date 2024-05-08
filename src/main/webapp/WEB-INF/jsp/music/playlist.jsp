@@ -33,8 +33,8 @@
 				</div>
 			</div>
 			<div><img src="https://cdn.epidemicsound.com/curation-assets/playlist-cover-images/76ff0f09-770f-4544-9119-e7ed568abba7/400x400.jpeg" width="300px" height="300px"></div>
-		</div>
-		
+		</div>			
+			
 		<table class="table text-center mt-5">
 			<thead>
 				<tr>
@@ -48,11 +48,10 @@
 			<tbody>
 				<c:forEach var="playlist" items="${playlist }">
 				<tr>
-					<td class="pt-4"><img src="${playlist.image }"></td>
+					<td><img src="${playlist.image }"></td>
 					<td class="pt-4">${playlist.songTitle}</td>
 					<td class="pt-4">${playlist.albumName}</td>
 					<td class="pt-4">${playlist.artistNameList }</td>
-					
 					<c:choose>
 						<c:when test="${userId eq playlist.userId }">
 							<td class="pt-4"><button type="button" class="btn btn-block delete-btn" data-music-id="${playlist.musicId }"><i class="bi bi-dash-lg bi-type-bold"></i></button></td>
@@ -85,7 +84,7 @@
 				, data:{"musicId":musicId}
 				, success:function(data) {
 					if(data.result == "success") {
-						alert("추가했습니다.");
+						alert("플레이리스트에 노래를 추가했습니다.");
 					} else {
 						alert("플레이리스트에 추가 실패");
 					}
@@ -108,7 +107,7 @@
 				, success:function(data) {
 					
 					if(data.result == "success") {
-						alert("플레이리스트에서 삭제 되었습니다.");
+						alert("플레이리스트에서 노래가 삭제 되었습니다.");
 						location.reload();
 					} else {
 						alert("삭제 실패");

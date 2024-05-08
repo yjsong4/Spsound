@@ -78,7 +78,7 @@
 				, data:{"musicId":musicId}
 				, success:function(data) {
 					if(data.result == "success") {
-						alert("추가했습니다.");
+						alert("플레이 리스트에 노래를 추가했습니다.");
 					} else {
 						alert("플레이리스트에 추가 실패");
 					}

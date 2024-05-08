@@ -52,7 +52,10 @@
 					<td class="pt-4"><a id="related" href="${related.aritstInfoUrl }">${related.artistName }</a></td>
 					<td class="pt-4">${related.artistGenre }</td>
 					<td class="pt-4">${related.popularity }</td>
-					<td class="pt-4"><button type="button" class="btn btn-block add-btn" data-artist-id="${related.artistId }" data-name-id="${related.artistName }"><i class="bi bi-plus-lg"></i></button></td>
+					<td class="pt-4 d-flex">
+						<button type="button" class="btn btn-block add-btn" data-artist-id="${related.artistId }" data-name-id="${related.artistName }"><i class="bi bi-plus-lg"></i></button>
+						<button type="button" class="btn btn-block delete-btn" data-name-id="${related.artistName }"><i class="bi bi-dash-lg bi-type-bold"></i></button>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -65,34 +68,57 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+	
+	$(document).ready(function() {
+			
 		
-	$(".add-btn").on("click", function() {
-		
+		$(".add-btn").on("click", function() {
+			
 		let artist = $(this).data("name-id");
 		let artistId = $(this).data("artist-id");
-		
-		$.ajax({
-			type:"post"
-			, url:"/music/select/artist"
-			, data:{"artist":artist, "artistId":artistId}
-			, success:function(data) {
-				
-				if(data.result == "success") {
-					location.reload();
-					alert("관심 아티스트 목록에 저장되었습니다.");
-				} else {
-					alert("음악가 저장 실패");
+			
+			$.ajax({
+				type:"post"
+				, url:"/music/select/artist"
+				, data:{"artist":artist, "artistId":artistId}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						alert("관심 아티스트 목록에 저장되었습니다.");
+					} else {
+						alert("음악가 저장 실패");
+					}
 				}
-			}
-			, error:function() {
-				alert("이미 추가된 노래입니다.");
-			}
+				, error:function() {
+					alert("이미 등록된 가수입니다.");
+				}
+			});
+			
 		});
 		
+		$(".delete-btn").on("click", function() {
+			
+			let artist = $(this).data("name-id");
+			
+			$.ajax({
+				type:"delete"
+				, url:"/music/delete/artist"
+				, data:{"artist":artist}
+				, success:function(data) {
+					
+					if(data.result == "success") {
+						alert("관심 아티스트 목록에서 삭제되었습니다.");
+					} else {
+						alert("음악가 삭제 실패");
+					}
+				}
+				, error:function() {
+					alert("음악가 삭제 에러");
+				}
+			});
+			
+		});
 	});
-	
-});
 </script>
 </body>
 </html>
