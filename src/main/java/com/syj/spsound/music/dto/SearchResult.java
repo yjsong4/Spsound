@@ -7,6 +7,7 @@ public class SearchResult {
 	private String songTitle;
 	private String albumName;
 	private String musicId;
+	private String artistId;
 	private String image;
 	private String aritstInfoUrl;
 	private int popularity;
@@ -30,6 +31,12 @@ public class SearchResult {
 	}
 	public void setMusicId(String musicId) {
 		this.musicId = musicId;
+	}
+	public String getArtistId() {
+		return artistId;
+	}
+	public void setArtistId(String artistId) {
+		this.artistId = artistId;
 	}
 	public String getImage() {
 		return image;
@@ -61,5 +68,5 @@ public class SearchResult {
 	public void setArtistNameList(List<String> artistNameList) {
 		this.artistNameList = artistNameList;
 	}
-	
+		
 }

@@ -262,6 +262,7 @@ public class SpotifyService {
 					artistResult.setImage(imageUrl);
 				}
 				
+				artistResult.setArtistId(related.getId());
 				artistResult.setArtistGenre(genreList);
 				artistResult.setAlbumName(artistName);
 				artistResult.setAritstInfoUrl(urls);

@@ -16,12 +16,14 @@
 		<section class="d-flex justify-content-center align-items-center">
 			<div>
 				<h1 class="text-center font-weight-bold main-text">Login</h1>
-				<form id="loginForm">
-					<input type="text" placeholder="email" size="36" class="form-control my-4" id="emailInput" required>
-					<input type="password" placeholder="password" class="form-control" id="passwordInput" required>
-					<button type="submit" class="btn btn-block text-white main-btn">LOGIN</button>
-				</form>
-				<div class="text-center small userlink"><a href="/user/join-view">Don't have an account?</a></div>
+				<div class="login-box">
+					<form id="loginForm">
+						<input type="text" placeholder="email" size="36" class="form-control my-4" id="emailInput" required>
+						<input type="password" placeholder="password" class="form-control" id="passwordInput" required>
+						<button type="submit" class="btn btn-block text-white main-btn">LOGIN</button>
+					</form>
+					<div class="text-center small userlink"><a href="/user/join-view">Don't have an account?</a></div>
+				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />

@@ -17,6 +17,10 @@ header > .logo-box {
 	letter-spacing: 3px;
 }
 
+.login-box {
+	height: 320px;
+}
+
 .main-text {
 	margin :95px;
 	letter-spacing:6px;
@@ -238,7 +242,7 @@ a:visited {
 }
 
 .music-box {
-	height: 400px;
+	height: 420px;
 	margin-top: 50px;
 }
 
