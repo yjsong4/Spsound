@@ -3,6 +3,7 @@
 #wrap {
 	width: 1200px;
 	margin: 0 auto;
+	height: auto;
 	min-height: 100%;
 }
 
@@ -17,8 +18,8 @@ header > .logo-box {
 	letter-spacing: 3px;
 }
 
-.login-box {
-	height: 320px;
+.input-box {
+	height: 660px;
 }
 
 .main-text {
@@ -189,7 +190,7 @@ a:visited {
 
 .content-box {
 	margin-top: 90px;
-	height: 481px;
+	height: 590px;
 }
 
 .img{
@@ -242,8 +243,15 @@ a:visited {
 }
 
 .music-box {
-	height: 420px;
+	height: 540px;
 	margin-top: 50px;
+}
+
+.playlist-link {
+	color: #896136;
+	font-size: 15px;
+	font-style: italic;
+	font-weight: bold;
 }
 
 .box-name {
@@ -252,7 +260,7 @@ a:visited {
 }
 
 .fontspan {
-	color: #7f5934;;
+	color: #7f5934;
 }
 
 .genre-box {
@@ -289,7 +297,7 @@ a:visited {
 	width: 350px;
 	height: 250px;
 	background-color: #f5e7e2;
-	border: 3px groove;
+	border: 3px solid;
 	border-radius: 45% 33% 55% 39%;
 	margin: 1rem;
     display: flex;
@@ -349,10 +357,8 @@ a:visited {
 }
 
 .footer-box {
-    display: block;
 	height: 80px;
 	width: 100%;
-	bottom: 0%;
 	font-size : 14px;
     margin-top: 80px;
 }

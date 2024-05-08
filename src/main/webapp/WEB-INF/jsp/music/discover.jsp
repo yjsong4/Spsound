@@ -20,7 +20,7 @@
 				<ul class="nav nav-fill">
 					<li class="nav-item name"><a class="nav-link" href="/spsound/main-view">Main</a></li>
 					<li class="nav-item name"><a class="nav-link" href="/spsound/discover-view">Discover</a></li>
-					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view">My Library</a></li>
+					<li class="nav-item name"><a class="nav-link" href="/spsound/playlist-view?userId=${userId }">My Library</a></li>
 				</ul>
 			</nav>	
 		</div>
@@ -32,7 +32,7 @@
 				<div class="genre-box">
 					<c:forEach var="others" items="${idsByGenreCount }" varStatus="status">
 					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
-					<div>Playlist ${status.count}</div></a>
+					<div class="playlist-link">Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 				<div class="artist-box">
 					<c:forEach var="others" items="${idsByArtistCount }" varStatus="status">
 					<a href="/spsound/othersPlaylists-view?userId=${others.userId }">
-					<div>Playlist ${status.count}</div></a>
+					<div class="playlist-link">Playlist ${status.count}</div></a>
 					</c:forEach>
 				</div>
 			</div>

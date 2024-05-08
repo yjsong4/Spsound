@@ -13,10 +13,10 @@
 
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		<section class="d-flex justify-content-center align-items-center">
+		<section class="d-flex justify-content-center align-items-center input-box">
 			<div>
 				<h1 class="text-center font-weight-bold main-text">Login</h1>
-				<div class="login-box">
+				<div>
 					<form id="loginForm">
 						<input type="text" placeholder="email" size="36" class="form-control my-4" id="emailInput" required>
 						<input type="password" placeholder="password" class="form-control" id="passwordInput" required>
