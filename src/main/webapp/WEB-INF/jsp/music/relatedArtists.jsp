@@ -52,7 +52,7 @@
 					<td class="pt-4"><a id="related" href="${related.aritstInfoUrl }">${related.artistName }</a></td>
 					<td class="pt-4">${related.artistGenre }</td>
 					<td class="pt-4">${related.popularity }</td>
-					<td class="pt-4 d-flex">
+					<td class="pt-4 d-flex">			
 						<button type="button" class="btn btn-block add-btn" data-artist-id="${related.artistId }" data-name-id="${related.artistName }"><i class="bi bi-plus-lg"></i></button>
 						<button type="button" class="btn btn-block delete-btn" data-name-id="${related.artistName }"><i class="bi bi-dash-lg bi-type-bold"></i></button>
 					</td>
